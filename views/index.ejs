@@ -7,5 +7,79 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <form>
+      <fieldset>
+        <legend>Sessão I: Seleção do Programa de Estudos</legend>
+        <p>Por favor, indique os dois programas de estudo de seu interesse. Lembre-se de escolher diferentes programas de pós-graduação da mesma universidade ou de universidades distintas.</p>
+        <label>Opção 1</label>
+        <input type="text" name="first_couse" placeholder="Primeira Opção de Curso">
+        <label>Opção 2</label>
+        <input type="text" name="second_couse" placeholder="Segunda Opção de Curso">
+        <hr>
+        <p>Por favor, indicar se concorda aceitar uma oferta de bolsa de outra universidade diferente das que selecionou no campo anterior, a fim de incrementar suas possibilidades de seleção, uma vez que a Comissão Final de Avaliação levará em consideração, entre outros critérios,  fatores como a distribuição geográfica, o mérito acadêmico do candidato e a decisão de admissão da universidade. As instituições considerarão seus objetivos educativos, suas qualificações acadêmicas, o campo de estudos, entre outros.</p>
+        <input type="checkbox" name="accept_exchange" value="yes"> Sim
+      </fieldset>
+
+      <fieldset>
+        <legend>Sessão II</legend>
+        
+        <fieldset>
+          <legend>1. Dados Pessoais</legend>
+          <label>País de cidadania ou residência legal</label>
+          <input type="text" name="country" placeholder="Nome do País">
+          <label>Nome</label>
+          <input type="text" name="first_name" placeholder="Primeiro nome">
+          <label>Sobrenome</label>
+          <input type="text" name="last_name" placeholder="Sobrenome">
+          <label>Endereço Atual</label>
+          <input type="text" name="address" placeholder="Endereço completo">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="exemplo@gmail.com">
+          <label>Telefone Fixo (Com código do país e da cidade)</label>
+          <input type="tel" name="phone" placeholder="Exemplo: 55 86 99999-9999">
+          <label>Telefone Móvel (Com código do país e da cidade)</label>
+          <input type="tel" name="phone" placeholder="Exemplo: 55 86 99999-9999">
+          <label>Sexo</label>
+          <select name="sex">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+          <label>Data de nascimento</label>
+          <input type="date" name="birthdate">
+          <label>Estado Civil</label>
+          <select name="status">
+            <option value="not_married">Solteiro(a)</option>
+            <option value="married">Casado(a)</option>
+          </select>
+          <fieldset>
+            <legend>Passaporte</legend>
+            <label>Número</label>
+            <input type="number" name="passport_number" placeholder="Número do Passaporte" style="appearance:textfield;-webkit-appearance:textfield;-moz-appearance:textfield">
+            <label>País Emissor</label>
+            <input type="text" name="passport_country" placeholder="País Emissor do Passaporte">
+            <label>Data de Expiração</label>
+            <input type="date" name="passport_expiration">
+          </fieldset>
+        </fieldset>
+        
+        <fieldset>
+          <legend>2. Idiomas</legend>
+          <label>Idioma(s) Nativo(s)</label>
+          <input type="text" name="native_langs" placeholder="Idiomas Nativos">
+          <label>Idioma(s) Estrangeiro(s)</label>
+          <input type="text" name="foreing_langs" placeholder="Indique todos os idiomas que domina e que possui certificados">
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Pontuação de Exames de Idiomas</legend>
+          <label>TOEFL</label>
+          <input type="number" name="TOEFL" placeholder="Sua Pontuação nesse exame" min="0" max="120" step="0.01">
+          <label>Outros (Especifique cada um)</label>
+          <input type="" name="others_langs_certificates" placeholder="Nome do certificado : Pontuação">
+        </fieldset>
+
+      </fieldset>
+    </form>
   </body>
 </html>
