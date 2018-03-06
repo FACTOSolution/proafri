@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const workExperienceSchema = new mongoose.Schema({
-    officeHolder: {
-        type: String,
-        required: true
+const academicHistorySchema = new mongoose.Schema({
+    degreeObtained: { 
+        type: String, 
+        required: true 
     },
-    employingInstitution: {
+    institution: {
         type: String,
         required: true
     },
@@ -17,6 +17,10 @@ const workExperienceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    average: {
+        type: Number,
+        required: true
+    },
     startDate: {
         type: Date,
         required: true
@@ -25,10 +29,14 @@ const workExperienceSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    description: {
+    study: {
+        type: String,
+        required: true
+    },
+    programName: {
         type: String,
         required: true
     }
 });
 
-module.exports = workExperienceSchema;
+module.exports = academicHistorySchema;
