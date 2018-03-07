@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var config = require('./config.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var admins = require('./routes/admins');
 
 var app = express();
 var Candidate = require('./models/candidate');
@@ -39,6 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/admin', admins);
+
+// secret
+app.set('secret', config.secret);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
