@@ -17,7 +17,9 @@
     "mongoose-crate-localfs": "^1.1.4",
     "mongoose-type-email": "^1.0.5",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "argon2": "^0.17.2",
+    "jsonwebtoken": "^8.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.1"
