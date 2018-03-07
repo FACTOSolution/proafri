@@ -26,6 +26,11 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+if(!server.address()){
+  throw new Error("Warning: verify if the port "+port+" is in use");
+}
+console.log('Runinig on port ' + server.address().port);
+console.dir(server.address())
 server.on('error', onError);
 server.on('listening', onListening);
 
