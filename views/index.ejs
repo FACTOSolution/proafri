@@ -16,7 +16,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-    <form>
+    <form id="candidateForm">
       <fieldset>
         <legend>Sessão I: Seleção do Programa de Estudos</legend>
         <p>Por favor, indique os dois programas de estudo de seu interesse. Lembre-se de escolher diferentes programas de pós-graduação da mesma universidade ou de universidades distintas.</p>
@@ -122,5 +122,8 @@
 
       </fieldset>
     </form>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/candidate_main.js"></script>
   </body>
 </html>
