@@ -4,12 +4,26 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose');
+var config = require('./config.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 var Candidate = require('./models/candidate');
+
+// MONGOOSE =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//mongoose.Promise = global.Promise;
+mongoose.connect(config.mongo.url);
+console.log("conf", config.mongo)
+mongoose.connection.on('error', (err) => {
+    console.log('Erro ao conectar ao banco: ', err);
+});
+mongoose.connection.on('open', () => {
+    console.log('MongoDB, conexão estabelecida com sucesso.');
+});
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
