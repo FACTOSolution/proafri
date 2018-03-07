@@ -74,4 +74,4 @@ candidateSchema.plugin(crate, {
     }
 })
 
-const Candidate = mongoose.model('Candidate', candidateSchema);
+module.exports = mongoose.model('Candidate', candidateSchema);
