@@ -7,7 +7,7 @@ const programSchema = mongoose.Schema({
     },
     university: {
         type: String,
-        unique: true,
+        //unique: true,
         required: true
     },
     region: {
