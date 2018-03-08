@@ -1,0 +1,42 @@
+{
+    "country": "Brazil",
+    "name": "Valentina Tereskova",
+    "address": "Rua dos foguetes",
+    "email": "tereskova@urss.com",
+    "tel": {
+        "mobile": "1234-5678",
+        "fixed": "3333-3333"
+    },
+    "gender": "feminino",
+    "dob": "7/09/1986",
+    "civilState": "Divorciada",
+    "passport": {
+        "number": "345",
+        "country": "Brazil",
+        "expirationDate": "05/09/2020"
+    },
+    "language": {
+        "native": "Russian",
+        "foreign": ["Albania", "Belarus", "Colombia"]
+    },
+    "languageExamPoints": {
+        "toefl": 8000,
+        "others" : 7670
+    },
+    "impairment": {
+        "isImpairment": true,
+        "impairmentDetail": "None Impair",
+        "needs": "Coofeine"
+    },
+    "programA": {
+        "name": "PA",
+        "university": "URSS1",
+        "region": "Leningrado"
+    },
+    "programB": {
+        "name": "PB",
+        "university": "URSS2",
+        "region": "Stalingrado"
+    }
+
+}
