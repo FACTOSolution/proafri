@@ -1,0 +1,24 @@
+
+
+.campo2 {
+	display: inline;
+	position: relative;
+}
+
+.direita{
+	display: inline;
+	float: right;
+}
+
+.relativo {
+	position: relative;
+	padding-left: 5%;
+}
+
+.nula {
+	padding-top: 5%;
+}
+
+.dois {
+	
+}
