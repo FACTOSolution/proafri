@@ -3,11 +3,16 @@ document.getElementById('candidateForm').addEventListener('submit', registerCand
 
 function registerCandidate(e) {
     // Declaring the variables that will hold the data
-    var country, name, address, email, tel, gender, dob, civilState
-        passport, language, languageExamPoints, impairment, programA,
-        programB;
+    var country, name, address, email, tel, gender, dob, civilState, passport, language, languageExamPoints, impairment, programA, programB;
     
     // Getting values from form
+    country = "Brasil";
+    name = "Jeova";
+    address = "AV Universitaria";
+    email = "albpedro458@gmail.com";
+    gender = "masculino";
+    dob = "10/02/2018";
+    civilState = "Solteiro";
     
     // Mounting attribute with sub-attributes
     tel = { "mobile": "32239188", "fixed": "99318394" };
@@ -18,7 +23,7 @@ function registerCandidate(e) {
     programA = { "name": "PA", "university": "URSS1", "region": "Leningrado" }
     programB = { "name": "PB", "university": "URSS2", "region": "Stalingrado" }
 
-    axios.post('http://localhost:5000', {
+    axios.post('http://localhost:5000/users/', {
         country: country,
         name: name,
         address: address,
