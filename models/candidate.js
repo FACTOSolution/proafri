@@ -5,7 +5,6 @@ const localFS = require('mongoose-crate-localfs');
 const Paper = require('./papers');
 const WorkExperience = require('./workExperience');
 const AcademicHistory = require('./academicHistory');
-const Program = require('./programs');
 
 const candidateSchema = new mongoose.Schema({
     country: {
@@ -61,8 +60,16 @@ const candidateSchema = new mongoose.Schema({
     papers: [Paper],
     workExperience: [WorkExperience],
     academicHistory: [AcademicHistory],
-    programA: { type: Program, required: true },
-    programB: { type: Program, required: true }
+    programA: { 
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Program',
+        required: true
+     },
+     programB: { 
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Program',
+        required: true
+     },
 })
 
 candidateSchema.plugin(crate, {

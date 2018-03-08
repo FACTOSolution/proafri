@@ -13,7 +13,14 @@ const programSchema = mongoose.Schema({
     region: {
         type: String,
         required: true
+    },
+    degree: {
+        type: String,
+        enum: ['mr', 'dc'],
+        required: true
     }
 })
 
-module.exports = programSchema;
+const Program = mongoose.model('Program', programSchema)
+
+module.exports = Program;

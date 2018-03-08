@@ -13,6 +13,10 @@ function registerCandidate(e) {
     gender = "masculino";
     dob = "10/02/2018";
     civilState = "Solteiro";
+    programA = $('select[name=programA]').val()
+    programB = $('select[name=programB]').val()
+
+    console.log(programA);
     
     // Mounting attribute with sub-attributes
     tel = { "mobile": "32239188", "fixed": "99318394" };
@@ -20,8 +24,6 @@ function registerCandidate(e) {
     language = { "native": "Russian", "foreign": ["Albania","Belarus"] };
     languageExamPoints = { "toefl": 5465, "others": { "isf": 546 } };
     impairment = { "isImpairment": true, "impairmentDetail": "None Impar", "needs": "Coffeine" };
-    programA = { "name": "PA", "university": "URSS1", "region": "Leningrado" }
-    programB = { "name": "PB", "university": "URSS2", "region": "Stalingrado" }
 
     axios.post('http://localhost:5000/users/', {
         country: country,
@@ -37,12 +39,14 @@ function registerCandidate(e) {
         languageExamPoints: languageExamPoints,
         impairment: impairment,
         programA: programA,
-        programB, programB     
+        programB: programB     
     })
     .then(function(response) {
         console.log("Enviado com sucesso");
     })
     .catch(function(error) {
-        console.log("Error: " + error);
+        console.log(error);
     })
+
+    e.preventDefault()
 }

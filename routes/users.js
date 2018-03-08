@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
+const mongoose = require('mongoose');
+
 var Candidate = require('../models/candidate');
 
 /**
  * Add a candidate to mongo
  */
 router.post('/', function(req, res, next){
+  req.body.programA = mongoose.Types.ObjectId(req.body.programA);
+  req.body.programB = mongoose.Types.ObjectId(req.body.programB);
   var newCand = new Candidate(req.body);
-  
+
   newCand.save((err) => {
     if(err){
       console.log(err);
@@ -17,7 +21,7 @@ router.post('/', function(req, res, next){
         message: "Erro no cadastro algum campo requerido faltando."
       });
     }else{
-      res.render('confirmation', {
+      res.render('login', {
         title: "Success",
         message: "Adicionado com sucesso."
       });

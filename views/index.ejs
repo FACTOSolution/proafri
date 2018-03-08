@@ -28,20 +28,20 @@
         <label>Opção 1</label>
         <select name="programA" required>
           <% for (var i = 0; i < programs.mr.length; i++) { %>
-            <option><%= programs.mr[i].name %></option>
+            <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
           <% } %>
           <% for (var i = 0; i < programs.dc.length; i++) { %>
-            <option><%= programs.dc[i].name %></option>
+            <option value=<%= programs.dc[i]._id %>><%= programs.dc[i].name %></option>
           <% } %>
         </select>
 
         <label>Opção 2</label>
         <select name="programB" required>
           <% for (var i = 0; i < programs.mr.length; i++) { %>
-            <option><%= programs.mr[i].name %></option>
+            <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
           <% } %>
           <% for (var i = 0; i < programs.dc.length; i++) { %>
-            <option><%= programs.dc[i].name %></option>
+            <option value=<%= programs.mr[i]._id %>><%= programs.dc[i].name %></option>
           <% } %>
         </select>
       </fieldset>
@@ -121,6 +121,7 @@
         </fieldset>
 
       </fieldset>
+      <input type="submit"/>
     </form>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
