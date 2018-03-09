@@ -4,21 +4,28 @@
         <title>GCUB - ProAfri</title>
    
         <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-        <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+        
+	<link rel="stylesheet" href="../static/css/bootstrap-iso.css" /> 
 
         <!--Font Awesome (added because you use icons in your prepend/append)-->
-        <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="../static/css/font-awesome.min.css" />
+
+
+	<!-- Custom Style -->
+'	<link rel="stylesheet" href="../static/css/style.css" /> 
 
         <!-- Inline CSS based on choices in "Settings" tab -->
         <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Impact, Charcoal, sans-serif; color: #2033bc}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: #ffffff !important;} .asteriskField{color: red;}.bootstrap-iso form .input-group-addon {color:#555555; background-color: #c8c8c8; border-radius: 4px; padding-left:12px}</style>
 
         <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+
+	<meta charset="utf-8">
     </head>
 <body>
 <div class="bootstrap-iso">
  <div class="container-fluid">
   <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
+   <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 box">
     <div class="formden_header">
     </div>
     <form method="post" id="candidateForm">
@@ -487,7 +494,7 @@
   </div>
  </div>
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="./css/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/candidate_main.js"></script>
 <script src="../js/candidate_util.js"></script>
