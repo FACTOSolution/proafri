@@ -55,5 +55,4 @@ function registerCandidate(e) {
         console.log(error);
     })
 
-    e.preventDefault()
 }
