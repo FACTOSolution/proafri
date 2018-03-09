@@ -3,462 +3,233 @@
 <head>
 	<title>ProAfri</title>
 	<meta charset="utf-8">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/formulario.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
- <section class="cabecalho">
-    	
-
+<section class=>
 </section>
-<section class="formulario jumbotron">
+<section class="jumbotron">
    <form>
-
-		<div class="selecao">
+		<div class=>
 			<h3>Seção I</h3>
 			<p><strong>Seleção do Programa de Estudos</strong></p>
 			<p>Por favor, indique os dois programas de estudo de seu interesse. 
 				Lembre-se de escolher diferentes programas de pós-graduação da mesma universidade ou de universidades distintas. </p>
-
-				<input type="text" name="Opcao1" placeholder="Opção 1:" required size="30">
-				<div class="input-field">
-					<select name="programA" required>
-						<option value="asdf">Aasdf</option>
-					</select>
+				<div class="form-group">
+					<label for="programa1">Programa 1</label>
+					<select class="form-control" required>
+						<option>Mestrado</option>
+						<option>Doutorado</option>
+					</select>	
 				</div>
-			
-				<input type="text" name="Opcao2" placeholder="Opção 2:" required class="campo2" size="30">
+				<div class="form-group">
+					<label for="programa1">Programa 2</label>
+					<select class="form-control" required>
+						<option>Mestrado</option>
+						<option>Doutorado</option>
+					</select>	
+				</div>	
+				<br>
 				<br>
 				Por favor, indicar se concorda aceitar uma oferta de bolsa de outra universidade diferente das que selecionou no campo 
 				anterior, a fim de incrementar suas possibilidades de seleção, uma vez que a Comissão Final de Avaliação levará em consideração, 
 				entre outros critérios, fatores como a distribuição geográfica, o mérito acadêmico do candidato e a decisão de admissão da universidade. 
 				As instituições considerarão seus objetivos educativos, suas qualificações acadêmicas, o campo de estudos, entre outros. <br>
-				<input type="checkbox" name="decisao" required >Sim, concordo</input>
-				
+				<input type="checkbox" name="decisao" required >Sim, concordo</input>		
 		</div>
-
 		<h3>Seção II</h3>
-		<div class="dados">
+		<div class=>
 			<p><strong>1. DADOS PESSOAIS</strong></p>
-
-		<div id="coluna-1">
+		<div id=>
     		<label>Pais cidadania ou residência legal:
     			<input type="text" name="Pais" required size="45">
 			</label>
-
-			<label class="relativo"> Nome e sobrenome:
+			<label class=> Nome e sobrenome:
     			<input type="text" name="Nome" required size="65"><br><br>
     		</label>
-
-
-			<label class="nula">Endereço atual
+			<label class=>Endereço atual
 				<input type="text" name="Endereco" required size="40" >
 			</label>
-
-			<label class="relativo"/> Correio eletrônico:
+			<label class=/> Correio eletrônico:
     			<input type="email" name="Correio_Eletronico" placeholder="(e-mail)" required size="30">
     		</label><br><br>
-
-			<label class="nula">Telefone fixo:
+			<label class=>Telefone fixo:
 				<input type="text" name="Telefone_fixo" placeholder="(com código do país e da cidade)" required size="30">
 			</label>
-
-			<label class="relativo"> Telefone móvel:
+			<label class=> Telefone móvel:
     			<input type="text" name="Telefone_movel" placeholder="(com código do país e da cidade)" required size="30">
     		</label><br><br>
-
-
-			<label class="nula"> Sexo:
-				<input type="radio" name="sexo" >F</input>
-				<input type="radio" name="sexo" >M</input>
+			<div class="form-group">
+				<label class=> Genero:
+					<select class="form-control" required>
+						<option>Mestrado</option>
+						<option>Doutorado</option>
+					</select>	
+			</div>
 			</label>
-
-			<label class="relativo"> Data de nascimento:
+			<label class=> Data de nascimento:
     			<input type="date" name="date" required>
     		</label><br><br>
-
-			<label class="nula"> Estado Civil:
+			<label class=> Estado Civil:
 				<input type="text" name="Estado_civil" size="23" required>
 			</label>
-
-
-	    	<label class="relativo"> Número do passaporte:
+	    	<label class=> Número do passaporte:
 	    		<input type="text" name="passaporte" required>
 	    	</label>
-
-
-	    	<label class="relativo"> País emissor:
+	    	<label class=> País emissor:
 	    		<input type="text" name="passaporte" required>
 	    	</label>
-
-
-	    	<label class="relativo"> Data de expiração:
+	    	<label class=> Data de expiração:
 	    		<input type="date" name="passaporte" required>
 	    	</label>
 		</div>
-
-		
-    	
-    	
-
-    	
-    	
-
 		</div>
-		
 		<br>
-
-		<div class="idiomas">
+		<div class=>
 		<p><strong>2. IDIOMAS</strong></p>
-			<div class="dois">
-			<label class="nula">Idioma(s) nativo(s):
+			<div class=>
+			<label class=>Idioma(s) nativo(s):
 				<input type="text" name="nativos"  size="50" required >
 			</label><br><br>
-
-			<label class="nula">Idioma(s) estrangeiro(s) (não inclua o idioma nativo). Indique todos aqueles idiomas que domina e que possui certificado:
+			<label class=>Idioma(s) estrangeiro(s) (não inclua o idioma nativo). Indique todos aqueles idiomas que domina e que possui certificado:
 				<input type="text" name="estrangeiros"  size="50">
 			</label>
 			</div>
-
 			<p><strong>3. PONTUAÇÃO DE EXAMES DE IDIOMAS (Se corresponder)</strong></p>
-			<div class="tres">
+			<div class=>
 				<label>TOEFL:
 					<input type="text" name="TOEFL"  >
 				</label>
-
-				<label class="relativo">Outros (especifique): 
+				<label class=>Outros (especifique): 
 					<input type="text" name="Outros" >
 				</label>
 			</div>
 		</div>
-
 		<p><strong>4. EDUCAÇÃO UNIVERSITÁRIA (Começar pelo título mais recente):</strong></p>
-		<div class="educacaoUniversitaria">
+		<div class=>
 			<p><strong>Título obtido: (Programa de Doutorado, PhD, se aplicar)</strong></p>
-			<div class="doutorado">
+			<div class=>
 					<label>Nome da Instituição:
 					<input type="text" name="nome instituição" size="50"><br><br>
 					</label>
-					<label class="nula">Cidade:
+					<label class=>Cidade:
 						<input type="text" name="cidade" size="30">
 					</label>
-					<label class="relativo">País:
+					<label class=>País:
 						<input type="text" name="pais" size="30"><br><br>
 					</label>
-					<label class="nula">Média obtida:
+					<label class=>Média obtida:
 						<input type="text" name="media_obtida" size="22">
 					</label>
-					<label class="relativo">Anos de estudo: 
-						<input type="text" name="anos_de_estudo" placeholder="(De/Até)"><br><br>
+					<label class=>Data de Início: 
+						<input type="date" name="estudo_inicio"><br><br>
 					</label>
-					<label class="nula">Área de Estudo:
+					<label class=>Data de Termino: 
+						<input type="date" name="estudo_termino"><br><br>
+					</label>
+					<label class=>Área de Estudo:
 						<input type="text" name="area_de_estudo" size="55"><br><br>
 					</label>
-					<label class="nula">Nome do Programa: 
+					<label class=>Nome do Programa: 
 						<input type="text" name="nomeDoPrograma" size="50">
 					</label>
 			</div>
-
-			<p><strong>Título obtido: (Programa de Mestrado, se aplicar)</strong></p>
-			<div class="mestrado">
-						<label>Nome da Instituição:
-					<input type="text" name="nome instituição" size="50"><br><br>
-					</label>
-					<label class="nula">Cidade:
-						<input type="text" name="cidade" size="30">
-					</label>
-					<label class="relativo">País:
-						<input type="text" name="pais" size="30"><br><br>
-					</label>
-					<label class="nula">Média obtida:
-						<input type="text" name="media_obtida" size="22">
-					</label>
-					<label class="relativo">Anos de estudo: 
-						<input type="text" name="anos_de_estudo" placeholder="(De/Até)"><br><br>
-					</label>
-					<label class="nula">Área de Estudo:
-						<input type="text" name="area_de_estudo" size="55"><br><br>
-					</label>
-					<label class="nula">Nome do Programa: 
-						<input type="text" name="nomeDoPrograma" size="50">
-					</label>
-			</div>
-
-			<p><strong>Título obtido: (Programa de Mestrado, se aplicar)</strong></p>
-			<div class="mestrado">
-					<label>Nome da Instituição:
-					<input type="text" name="nome instituição" size="50"><br><br>
-					</label>
-					<label class="nula">Cidade:
-						<input type="text" name="cidade" size="30">
-					</label>
-					<label class="relativo">País:
-						<input type="text" name="pais" size="30"><br><br>
-					</label>
-					<label class="nula">Média obtida:
-						<input type="text" name="media_obtida" size="22">
-					</label>
-					<label class="relativo">Anos de estudo: 
-						<input type="text" name="anos_de_estudo" placeholder="(De/Até)"><br><br>
-					</label>
-					<label class="nula">Área de Estudo:
-						<input type="text" name="area_de_estudo" size="55"><br><br>
-					</label>
-					<label class="nula">Nome do Programa: 
-						<input type="text" name="nomeDoPrograma" size="50">
-					</label>
-			</div>
-
-			<p><strong>Título obtido: (Programa de Licenciatura ou Bacharelado, se aplicar)</strong></p>
-			<div class="licenciatura">
-						<label>Nome da Instituição:
-					<input type="text" name="nome instituição" size="50"><br><br>
-					</label>
-					<label class="nula">Cidade:
-						<input type="text" name="cidade" size="30">
-					</label>
-					<label class="relativo">País:
-						<input type="text" name="pais" size="30"><br><br>
-					</label>
-					<label class="nula">Média obtida:
-						<input type="text" name="media_obtida" size="22">
-					</label>
-					<label class="relativo">Anos de estudo: 
-						<input type="text" name="anos_de_estudo" placeholder="(De/Até)"><br><br>
-					</label>
-					<label class="nula">Área de Estudo:
-						<input type="text" name="area_de_estudo" size="55"><br><br>
-					</label>
-					<label class="nula">Nome do Programa: 
-						<input type="text" name="nomeDoPrograma" size="50">
-					</label>
-			</div>
-
-			<p><strong>Outro tipo de grau obtido:</strong></p>
-			<div class="outro">
-						<label>Nome da Instituição:
-					<input type="text" name="nome instituição" size="50"><br><br>
-					</label>
-					<label class="nula">Cidade:
-						<input type="text" name="cidade" size="30">
-					</label>
-					<label class="relativo">País:
-						<input type="text" name="pais" size="30"><br><br>
-					</label>
-					<label class="nula">Média obtida:
-						<input type="text" name="media_obtida" size="22">
-					</label>
-					<label class="relativo">Anos de estudo: 
-						<input type="text" name="anos_de_estudo" placeholder="(De/Até)"><br><br>
-					</label>
-					<label class="nula">Área de Estudo:
-						<input type="text" name="area_de_estudo" size="55"><br><br>
-					</label>
-					<label class="nula">Nome do Programa: 
-						<input type="text" name="nomeDoPrograma" size="50">
-					</label>
-			</div>
-		</div>
-
 		<p><strong>5. PUBLICAÇÕES / PRÊMIOS / BOLSAS:</strong></p>
-		<div class="PPB">
+		<div class=>
 			<p><strong>Título da dissertação / tese:</strong></p>
-			<div class="dissertação">
-				<label class="nula">Título:
+			<div class=>
+				<label class=>Título:
 					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
 				</label>
-				<label class="relativo">Ano:
-					<input type="text" name="ano" placeholder="ano" required><br><br>
-				</label>
-				<label class="nula">Título:
-					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
-				</label>
-				<label class="relativo">Ano:
+				<label class=>Ano:
 					<input type="text" name="ano" placeholder="ano" required>
 				</label>
 			</div>
-			<p><strong>Trabalhos publicados ou inéditos em sua área de estudos:</strong></p>
-			<div class="dissertação">
-				<label class="nula">Título:
-					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
-				</label>
-				<label class="relativo">Ano:
-					<input type="text" name="ano" placeholder="ano" required><br><br>
-				</label>
-				<label class="nula">Título:
-					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
-				</label>
-				<label class="relativo">Ano:
-					<input type="text" name="ano" placeholder="ano" required>
-				</label>
-			</div>
-			<p><strong>Prêmios:</strong></p>
-			<div class="dissertação">
-				<label class="nula">Título:
-					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
-				</label>
-				<label class="relativo">Ano:
-					<input type="text" name="ano" placeholder="ano" required><br><br>
-				</label>
-				<label class="nula">Título:
-					<input type="text" name="Titulo da tese" placeholder="Titulo" required size="50">
-				</label>
-				<label class="relativo">Ano:
-					<input type="text" name="ano" placeholder="ano" required>
-				</label>
-			</div>
-
 			<p><strong>Bolsas recebidas previamente:</strong></p>
-			<div class="bolsa">
-				<label class="nula">Nome da Instituição que a outorgou:
+			<div class=>
+				<label class=>Nome da Instituição que a outorgou:
 					<input type="text" name="instituiçãoBolsa" size="52" required>
 				</label><br><br>
-				<label class="nula">Propósito
+				<label class=>Propósito
 					<input type="text" name="proposito" size="30" required>
 				</label>
-				<label class="relativo">País
+				<label class=>País
 					<input type="text" name="pais" size="30" required>
 				</label><br><br>
-				<label class="nula">De
+				<label class=>De
 					<input type="date" name="de">
 				</label>
-				<label class="relativo">Até
+				<label class=>Até
 					<input type="date" name="ate">
 				</label><br><br>
 			</div>
-
 		</div>
-
 		<p><strong>6. EXPERIÊNCIA PROFISSIONAL</strong></p>
-		<div class="ExperienciaProfissional">
-			<div class="Empregos">
-				<label class="nula">Título do cargo / posto atual:
+		<div class=>
+			<div class=>
+				<label class=>Título do cargo / posto atual:
 					<input type="text" name="cargo" size="50"><br><br>
 				</label>
-				<label class="nula">Instituição empregadora:
+				<label class=>Instituição empregadora:
 					<input type="text" name="empregador" size="50"><br><br>
 				</label>
-				<label class="nula">Cidade:
+				<label class=>Cidade:
 					<input type="text" name="cidade" size="30">
 				</label>
-				<label class="relativo">País:
+				<label class=>País:
 					<input type="text" name="pais" size="30"><br>
 				</label><br>
-				<label class="nula">De:
+				<label class=>De:
 					<input type="date" name="inicio">
 				</label>
-				<label class="relativo">Até:
+				<label class=>Até:
 					<input type="date" name="fim"><br><br>
 				</label>
-				<label class="nula">Breve descrição de suas funções atuais:
+				<label class=>Breve descrição de suas funções atuais:
 					<input type="text" name="comentarios opcionais" size="50">
 				</label>
 			</div>
 			<br>
-
-			<div class="Empregos">
-				<label class="nula">Título do cargo / posto atual:
-					<input type="text" name="cargo" size="50"><br><br>
-				</label>
-				<label class="nula">Instituição empregadora:
-					<input type="text" name="empregador" size="50"><br><br>
-				</label>
-				<label class="nula">Cidade:
-					<input type="text" name="cidade" size="30">
-				</label>
-				<label class="relativo">País:
-					<input type="text" name="pais" size="30"><br>
-				</label><br>
-				<label class="nula">De:
-					<input type="date" name="inicio">
-				</label>
-				<label class="relativo">Até:
-					<input type="date" name="fim"><br><br>
-				</label>
-				<label class="nula">Breve descrição de suas funções atuais:
-					<input type="text" name="comentarios opcionais" size="50">
-				</label>
-			</div>
-			<br>
-
-			<div class="Empregos">
-				<label class="nula">Título do cargo / posto atual:
-					<input type="text" name="cargo" size="50"><br><br>
-				</label>
-				<label class="nula">Instituição empregadora:
-					<input type="text" name="empregador" size="50"><br><br>
-				</label>
-				<label class="nula">Cidade:
-					<input type="text" name="cidade" size="30">
-				</label>
-				<label class="relativo">País:
-					<input type="text" name="pais" size="30"><br>
-				</label><br>
-				<label class="nula">De:
-					<input type="date" name="inicio">
-				</label>
-				<label class="relativo">Até:
-					<input type="date" name="fim"><br><br>
-				</label>
-				<label class="nula">Breve descrição de suas funções atuais:
-					<input type="text" name="comentarios opcionais" size="50">
-				</label>
-			</div>
 			<div>
 				<br>
 				<strong>Para compreender melhor qualquer brecha de tempo existente em seus antecedentes acadêmicos e/ou profissionais, por favor, inclua nesta seção as datas e uma breve explicação sobre qualquer período de tempo posterior a sua
 				educação secundária durante o qual não estudou nem trabalhou (por exemplo: para viajar, constituir família, doença, etc.)</strong>
 			</div>
 		</div>
-
 		<p><strong>7. INFORMAÇÃO COMPLEMENTAR (OPCIONAL):</strong></p>
 		<p><strong>NOTA: </strong>A resposta a estas perguntas é voluntária e opcional. Esta declaração não constituirá uma auto identificação com direito a receber acomodações especiais, no entanto, será levada em consideração pela Comissão Final de Avaliação no momento de outorgar a bolsa a uma universidade que conte com as acomodações requeridas.</p>
-		<div class="informacaoComplementar">
-		    
+		<div class=>
 		    <label>Portador de Necessidades Especiais (PNE)?<br>
 			<input type="radio" name="resposta" >Sim</input>
 			<input type="radio" name="resposta" >Não</input>
 			</label>
 			<br>
-
 			<label>Em caso afirmativo, indique qual:
 			<input type="text" name="necessidadeEspecial"><br>
 			</label>
-
 			<label>Por favor, especifique o tipo de acomodação  que precisa, em termos de infraestrutura, comunicações ou materiais, para incorporar-se plenamente ao processo de aprendizagem (Ex. intérprete de língua brasileira de sinais (Libras), infraestrutura física, material em braile, áudio livros ou outra, etc.)
 			<input type="text" name="atendimento especial" size="50">
 			</label>
 		</div>
 		<br>
-
-		<div class="confirmacao">
+		<div class=>
 			<label>
 			<input type="checkbox" name="certifico" required>Certifico que li, entendo e aceito completamente as regras e condições estabelecidas no <strong>Edital GCUB/ ProAfri nº 001/2018</strong>, referente ao <strong>PROGRAMA DE FORMAÇÃO DE PROFESSORES DE EDUCAÇÃO SUPERIOR DE PAÍSES AFRICANOS - ProAfri, Edição Moçambique</strong>. Compreendo que caso seja selecionado(a), aceitar a oferta de bolsa do Programa implicará assumir todas as responsabilidades financeiras não cobertas por este Edital.<br></input>
 			</label>
-
 			<label>
 			<input type="checkbox" name="aceito" required>Certifico que as declarações feitas por mim como respostas às perguntas anteriores são verídicas, completas e corretas e compreendo que qualquer falsidade ou omissão neste ou em qualquer documento exigido pelo GCUB poderá dar motivo à minha exclusão do processo de seleção.</input><br>
 			</label>
-
 			<br>
 			Os nomes dos candidatos selecionados serão publicados na página web do GCUB <a href="http://www.grupocoimbra.org.br">(http://www.grupocoimbra.org.br/)</a>. Compreendo que ao enviar o formulário de solicitação de candidatura completo, estou de acordo com a publicação do meu nome.
 			<br>
-
 			<input type="submit" name="Botão" value="Submeter">
 		</div>
 	</form>
 </section>
-<section class="rodape">
-    	
-
- </section>
- <script>
-	 $(document).ready(function() {
-		 $('select').material_select();
-	 })
- </script>
-
+<section class=>
+</section>
 </body>
 </html>
