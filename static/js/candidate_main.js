@@ -5,25 +5,32 @@ function registerCandidate(e) {
     // Declaring the variables that will hold the data
     var country, name, address, email, tel, gender, dob, civilState, passport, language, languageExamPoints, impairment, programA, programB;
     
+    // Decalring variables that will hold temp values
+    var isImpairment = false;
+
     // Getting values from form
-    country = "Brasil";
-    name = "Jeova";
-    address = "AV Universitaria";
-    email = "albpedro458@gmail.com";
-    gender = "masculino";
-    dob = "10/02/2018";
-    civilState = "Solteiro";
+    country = $('#country').val();
+    name = $('#name').val();
+    address = $('#address').val();
+    email = $('#email').val();
+    gender = $('select[name=gender]').val();
+    dob = $('#dob').val();
+    civilState = $('#civilState').val();
     programA = $('select[name=programA]').val()
     programB = $('select[name=programB]').val()
 
-    console.log(programA);
+    // Testing if the candidate is impairment
+    if($('input[name=isImpairment]:checked').val() === 'true') { isImpairment = true; }
+    
     
     // Mounting attribute with sub-attributes
-    tel = { "mobile": "32239188", "fixed": "99318394" };
-    passport = { "number": "4864", "country": "Brazil", "expirationDate": "05/09/2015" };
-    language = { "native": "Russian", "foreign": ["Albania","Belarus"] };
-    languageExamPoints = { "toefl": 5465, "others": { "isf": 546 } };
-    impairment = { "isImpairment": true, "impairmentDetail": "None Impar", "needs": "Coffeine" };
+    tel = { "mobile": $('#telMovel').val(), "fixed": $('#telFixed').val() };
+    passport = { "number": $('#passportNumber').val(), "country": $('#passportCountry').val(), "expirationDate": $('#passportExpirationDate').val() };
+    language = { "native": $('#languageNative').val(), "foreign": $('#languageForeign').val() };
+    languageExamPoints = { "toefl": $('#languageExamPointsToefl').val(), "others": $('#languageExamPointsOthers').val() };
+    impairment = { "isImpairment": isImpairment, "impairmentDetail": $('#impairmentDetail').val(), "needs": $('#needs').val() };
+
+    // Building Array of data.
 
     axios.post('http://localhost:5000/users/', {
         country: country,
