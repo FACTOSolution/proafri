@@ -3,7 +3,12 @@ document.getElementById('candidateForm').addEventListener('submit', registerCand
 
 function registerCandidate(e) {
     // Declaring the variables that will hold the data
-    var country, name, address, email, tel, gender, dob, civilState, passport, language, languageExamPoints, impairment, programA, programB;
+    var country, name, address, email, tel, gender, dob, 
+    civilState, passport, language, languageExamPoints, impairment,
+    programA, programB;
+
+    // Declaring variables that will hold array data
+    var papers = [];
     
     // Decalring variables that will hold temp values
     var isImpairment = false;
@@ -22,7 +27,6 @@ function registerCandidate(e) {
     // Testing if the candidate is impairment
     if($('input[name=isImpairment]:checked').val() === 'true') { isImpairment = true; }
     
-    
     // Mounting attribute with sub-attributes
     tel = { "mobile": $('#telMovel').val(), "fixed": $('#telFixed').val() };
     passport = { "number": $('#passportNumber').val(), "country": $('#passportCountry').val(), "expirationDate": $('#passportExpirationDate').val() };
@@ -30,7 +34,16 @@ function registerCandidate(e) {
     languageExamPoints = { "toefl": $('#languageExamPointsToefl').val(), "others": $('#languageExamPointsOthers').val() };
     impairment = { "isImpairment": isImpairment, "impairmentDetail": $('#impairmentDetail').val(), "needs": $('#needs').val() };
 
-    // Building Array of data.
+    // Building Array of papers.
+    var papersTitle = $(".paperTitle").map(function() {
+        return this.value;
+    })
+    var papersYear = $('.paperYear').map(function() {
+        return this.value;
+    })
+    for(i = 0; i < papersTitle.length; i++){
+        papers.push({ title: papersTitle[i], year: papersYear[i] })
+    }
 
     axios.post('http://localhost:5000/users/', {
         country: country,
@@ -46,7 +59,8 @@ function registerCandidate(e) {
         languageExamPoints: languageExamPoints,
         impairment: impairment,
         programA: programA,
-        programB: programB     
+        programB: programB,
+        papers: papers     
     })
     .then(function(response) {
         console.log("Enviado com sucesso");

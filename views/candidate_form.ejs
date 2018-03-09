@@ -231,7 +231,7 @@
       </label>
       <input class="form-control" id="languageNative" name="languageNative" placeholder="Portugu&ecirc;s" type="text"/>
       <span class="help-block" id="hint_languageNative">
-       Coloque a sua linga nativva
+       Coloque a sua linga nativa
       </span>
      </div>
      <div class="form-group ">
@@ -350,13 +350,13 @@
             Coloque o nome do programa no qual voc&ecirc; participou nessa institui&ccedil;&atilde;o.
         </span>
     </div>
-    <section id="#paperSection">
+    <section id="paperSection">
     <h3 class="bg-info text-muted">5.PUBLICAÇÕES/PRÊMIOS/BOLSAS</h3>
     <div class="form-group ">
         <label class="control-label " for="paperTitle">
             Papers - T&iacute;tulo
         </label>
-        <input class="form-control" id="paperTitle" name="paperTitle" type="text"/>
+        <input class="form-control paperTitle" id="paperTitle" name="paperTitle" type="text"/>
         <span class="help-block" id="hint_paperTitle">
             Coloque o t&iacute;tulo de sua publica&ccedil;&atilde;o
         </span>
@@ -365,7 +365,7 @@
         <label class="control-label " for="paperYear">
             Paper - Ano De Publica&ccedil;&atilde;o
         </label>
-        <input class="form-control" id="paperYear" name="paperYear" placeholder="2015" type="text"/>
+        <input class="form-control paperYear" id="paperYear" name="paperYear" placeholder="2015" type="text"/>
         <span class="help-block" id="hint_paperYear">
             Coloque o ano de publica&ccedil;&atilde;o de seu artigo
         </span>
@@ -373,9 +373,9 @@
     </section>
     <div class="form-group">
         <div>
-            <button class="btn btn-primary btn-lg" id="addPaper">
+            <div class="btn btn-primary btn-lg" id="addPaper">
                 <span class="glyphicon glyphicon-plus"></span>
-            </button>
+            </div>
         </div>
     </div>
     <h3 class="bg-info text-muted">6.EXPERIÊNCIA PROFISSIONAL</h3>
@@ -439,6 +439,7 @@
             Coloque uma breve descri&ccedil;&atilde;o desse posto.
         </span>
     </div>
+    <h3 class="bg-info text-muted">7.INFORMAÇÃO COMPLEMENTAR(OPCIONAL):</h3>
     <div class="form-group" id="div_isImpairment">
         <label class="control-label requiredField" for="isImpairment">
             Voc&ecirc; tem alguma defici&ecirc;ncia ?
@@ -458,11 +459,8 @@
         </div>
     </div>
      <div class="form-group ">
-      <label class="control-label requiredField" for="impairmentDetail">
+      <label class="control-label" for="impairmentDetail">
        Defici&ecirc;ncia
-       <span class="asteriskField">
-        *
-       </span>
       </label>
       <textarea class="form-control" cols="40" id="impairmentDetail" name="impairmentDetail" rows="10" disabled></textarea>
       <span class="help-block" id="hint_impairmentDetail">
