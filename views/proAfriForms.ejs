@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<title>A definir</title>
+	<title>ProAfri</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="formulario.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/formulario.css">
 </head>
 <body>
  <section class="cabecalho">
@@ -21,7 +23,11 @@
 				Lembre-se de escolher diferentes programas de pós-graduação da mesma universidade ou de universidades distintas. </p>
 
 				<input type="text" name="Opcao1" placeholder="Opção 1:" required size="30">
-				
+				<div class="input-field">
+					<select name="programA" required>
+						<option value="asdf">Aasdf</option>
+					</select>
+				</div>
 			
 				<input type="text" name="Opcao2" placeholder="Opção 2:" required class="campo2" size="30">
 				<br>
@@ -448,6 +454,11 @@
     	
 
  </section>
+ <script>
+	 $(document).ready(function() {
+		 $('select').material_select();
+	 })
+ </script>
 
 </body>
 </html>

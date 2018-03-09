@@ -14,7 +14,7 @@ app.set('secret', config.secret);
  *  Middleware
  */
 router.use(function(req, res, next){
-    let token = req.body.token || req.query.token || req.headers['x-access-token'];
+    let token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies['token'];
     console.log("Token ", token);
     if(token){
         jwt.verify(token, app.get('secret'), function(err, decoded){
@@ -74,7 +74,7 @@ router.get('/page', function(req, res, next){
         }
       });
   }else{
-    res.render('login', {
+    res.render('index', {
         title: "Login",
         message: "Usuário nao autenticado",
     });
@@ -102,12 +102,15 @@ router.post('/', function(req, res){
                 return admin.verify(req.body.password, function(bool){
                     if(bool){
                         console.log("Autenticação ok, redirecionando... para /admin/page");
-                        res.header('token', jwt.sign({
-                                _id: admin._id,
-                                name: admin.name
-                            }, app.get('secret'), {expiresIn: 60*30}));
-                            
-                        res.redirect('/page');
+                        // res.header('token', jwt.sign({
+                        //         _id: admin._id,
+                        //         name: admin.name
+                        //     }, app.get('secret'), {expiresIn: 60*30}));
+                        res.cookie('token',  jwt.sign({
+                            _id: admin._id,
+                            name: admin.name
+                        }, app.get('secret'), {expiresIn: 60*30}));
+                        res.redirect('/admin/page');
                         /*
                         return res.json({
                             success: true,
@@ -131,7 +134,7 @@ router.post('/', function(req, res){
     }else{
         // Redirect to /admin/page
         console.log("Redirect actived");
-        res.redirect('/page');
+        res.redirect('/admin/page');
     }
 });
 

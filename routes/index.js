@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
       return next(err);
     }
     var program = { mr: results.programsM, dc: results.programsD }
-    res.render('index', { title: 'ProAfri',  programs: program });
+    res.render('proAfriForms', { title: 'ProAfri',  programs: program });
   })
 });
 
