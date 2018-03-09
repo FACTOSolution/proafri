@@ -39,9 +39,12 @@
             </span>
         </label>
         <select class="select form-control" id="programA" name="programA" required>
-            <option value="First Choice">
-            First Choice
-            </option>
+            <% for (var i = 0; i < programs.mr.length; i++) { %>
+                <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
+            <% } %>
+            <% for (var i = 0; i < programs.dc.length; i++) { %>
+                <option value=<%= programs.dc[i]._id %>><%= programs.dc[i].name %></option>
+            <% } %>
         </select>
         <span class="help-block" id="hint_programA">
             Seleciona o programa que voc&ecirc; deseja aplicar.
@@ -55,9 +58,12 @@
             </span>
         </label>
         <select class="select form-control" id="programB" name="programB">
-            <option value="First Choice">
-            First Choice
-            </option>
+            <% for (var i = 0; i < programs.mr.length; i++) { %>
+                <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
+            <% } %>
+            <% for (var i = 0; i < programs.dc.length; i++) { %>
+                <option value=<%= programs.dc[i]._id %>><%= programs.dc[i].name %></option>
+            <% } %>
         </select>
         <span class="help-block" id="hint_programB">
             Seleciona o programa que voc&ecirc; deseja aplicar.
@@ -252,11 +258,8 @@
      </div>
      <h3 class="bg-info text-muted">3.PONTUAÇÃO DE EXAMES DE IDIOMAS (Se corresponder)</h3>
      <div class="form-group ">
-      <label class="control-label requiredField" for="languageExamPointsToefl">
+      <label class="control-label" for="languageExamPointsToefl">
        TOEFL - Pontua&ccedil;&atilde;o
-       <span class="asteriskField">
-        *
-       </span>
       </label>
       <input class="form-control" id="languageExamPointsToefl" name="languageExamPointsToefl" placeholder="600" type="text"/>
       <span class="help-block" id="hint_languageExamPointsToefl">
@@ -264,11 +267,8 @@
       </span>
      </div>
      <div class="form-group ">
-      <label class="control-label requiredField" for="languageExamPointsOthers">
+      <label class="control-label" for="languageExamPointsOthers">
        Outros Exames De Profici&ecirc;ncia
-       <span class="asteriskField">
-        *
-       </span>
       </label>
       <textarea class="form-control" cols="40" id="languageExamPointsOthers" name="languageExamPointsOthers" placeholder="IELTS: 500" rows="2"></textarea>
       <span class="help-block" id="hint_languageExamPointsOthers">
@@ -285,7 +285,7 @@
                 <label class="control-label " for="degree">
                     T&iacute;tulo Obtido.
                 </label>
-                <input class="form-control" id="degree" name="degree" type="text"/>
+                <input class="form-control degree" id="degree" name="degree" type="text"/>
                 <span class="help-block" id="hint_degree">
                     Coloque se o t&iacute;tulo alcan&ccedil;ado foi PHD, Mestrado...
                 </span>
@@ -294,7 +294,7 @@
                 <label class="control-label " for="academicInstituition">
                     Institui&ccedil;&atilde;o
                 </label>
-                <input class="form-control" id="academicInstituition" name="academicInstituition" type="text"/>
+                <input class="form-control academicInstitution" id="academicInstitution" name="academicInstituition" type="text"/>
                 <span class="help-block" id="hint_academicInstituition">
                     Coloque a institui&ccedil;&atilde;o na qual voc&ecirc; ganhou este t&iacute;tulo.
                 </span>
@@ -303,7 +303,7 @@
                 <label class="control-label " for="academicCity">
                     Cidade
                 </label>
-                <input class="form-control" id="academicCity" name="academicCity" type="text"/>
+                <input class="form-control academicCity" id="academicCity" name="academicCity" type="text"/>
                 <span class="help-block" id="hint_academicCity">
                     Coloque a cidade dessa institui&ccedil;&atilde;o.
                 </span>
@@ -312,7 +312,7 @@
                 <label class="control-label " for="academicCountry">
                     Pa&iacute;s
                 </label>
-                <input class="form-control" id="academicCountry" name="academicCountry" type="text"/>
+                <input class="form-control academicCountry" id="academicCountry" name="academicCountry" type="text"/>
                 <span class="help-block" id="hint_academicCountry">
                     Coloque o Pa&iacute;s dessa institui&ccedil;&atilde;o
                 </span>
@@ -321,7 +321,7 @@
                 <label class="control-label " for="academicAverage">
                     M&eacute;dia Obtida
                 </label>
-                <input class="form-control" id="academicAverage" name="academicAverage" type="text"/>
+                <input class="form-control academicAverage" id="academicAverage" name="academicAverage" type="text"/>
                 <span class="help-block" id="hint_academicAverage">
                     Coloque sua m&eacute;dia.
                 </span>
@@ -330,7 +330,7 @@
                 <label class="control-label " for="academicStartDate">
                     Data de &iacute;nicio
                 </label>
-                <input class="form-control" id="academicStartDate" name="academicStartDate" placeholder="DD/MM/AAAA" type="date"/>
+                <input class="form-control academicStartDate" id="academicStartDate" name="academicStartDate" placeholder="DD/MM/AAAA" type="date"/>
                 <span class="help-block" id="hint_academicStartDate">
                     Coloque a data na qual iniciou os seus estudos nessa institui&ccedil;&atilde;o.
                 </span>
@@ -339,7 +339,7 @@
                 <label class="control-label " for="date5">
                     Data de t&eacute;rmino.
                 </label>
-                <input class="form-control" id="date5" name="date5" placeholder="DD/MM/AAAA" type="date"/>
+                <input class="form-control academicEndDate" id="date5" name="date5" placeholder="DD/MM/AAAA" type="date"/>
                 <span class="help-block" id="hint_date5">
                     Coloque a data na qual voc&ecirc; terminou seus estudos na institui&ccedil;&atilde;o.
                 </span>
@@ -348,7 +348,7 @@
                 <label class="control-label " for="academicStudy">
                     &Aacute;rea de estudo.
                 </label>
-                <input class="form-control" id="academicStudy" name="academicStudy" type="text"/>
+                <input class="form-control academicStudy" id="academicStudy" name="academicStudy" type="text"/>
                 <span class="help-block" id="hint_academicStudy">
                     Coloque a &aacute;rea de estudo praticada nessa institui&ccedil;&atilde;o.
                 </span>
@@ -357,7 +357,7 @@
                 <label class="control-label" for="academicProgramName">
                     Nome Do Programa.
                 </label>
-                <input class="form-control" id="academicProgramName" name="academicProgramName" type="text"/>
+                <input class="form-control academicProgramName" id="academicProgramName" name="academicProgramName" type="text"/>
                 <span class="help-block" id="hint_academicProgramName">
                     Coloque o nome do programa no qual voc&ecirc; participou nessa institui&ccedil;&atilde;o.
                 </span>
@@ -408,77 +408,86 @@
     <!-- FIM DA SEÇÃO 5 -->
 
     <!-- INICIO DA SEÇÃO 6 -->
+    <section id="workSection">
     <h3 class="bg-info text-muted">6.EXPERIÊNCIA PROFISSIONAL</h3>
-    <div class="form-group ">
-        <label class="control-label " for="officeHolder">
-            T&iacute;tulo do Posto
-        </label>
-        <input class="form-control" id="officeHolder" name="officeHolder" type="text"/>
-        <span class="help-block" id="hint_officeHolder">
-            Coloque o posto que voc&ecirc; ocupou, ou ocupa atualmente.
-        </span>
+    <div class="panel panel-info" id="workParent">
+        <div class="panel-heading">Experiência</div>
+        <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="officeHolder">
+                T&iacute;tulo do Posto
+            </label>
+            <input class="form-control officeHolder" id="officeHolder" name="officeHolder" type="text"/>
+            <span class="help-block" id="hint_officeHolder">
+                Coloque o posto que voc&ecirc; ocupou, ou ocupa atualmente.
+            </span>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="employingInstitution">
+                Institui&ccedil;&atilde;o Empregadora
+            </label>
+            <input class="form-control employingInstitution" id="employingInstitution" name="employingInstitution" type="text"/>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="workCity">
+                Cidade
+            </label>
+            <input class="form-control workCity" id="workCity" name="workCity" type="text"/>
+            <span class="help-block" id="hint_city">
+                Coloque a cidade onde exerceu/exerce este cargo.
+            </span>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="workCountry">
+                Pa&iacute;s
+            </label>
+            <input class="form-control workCountry" id="workCountry" name="workCountry" type="text"/>
+            <span class="help-block" id="hint_workCountry">
+                Coloque o pa&iacute;s onde exerceu/exerce este posto.
+            </span>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="workStartDate">
+                Data de In&iacute;cio
+            </label>
+            <input class="form-control workStartDate" id="workStartDate" name="workStartDate" placeholder="DD/MM/AAAA" type="date"/>
+            <span class="help-block" id="hint_workStartDate">
+                Coloque a data de in&iacute;cio do exercicio desse posto.
+            </span>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="workEndDate">
+                Data de T&eacute;rmino.
+            </label>
+            <input class="form-control workEndDate" id="workEndDate" name="workEndDate" placeholder="DD/MM/AAAA" type="date"/>
+            <span class="help-block" id="hint_workEndDate">
+                Coloque a data de t&eacute;rmino do exerc&iacute;cio desse posto.
+            </span>
+            </div>
+            <div class="form-group panel-body" style="padding-bottom:0px">
+            <label class="control-label " for="workDescription">
+                Descri&ccedil;&atilde;o
+            </label>
+            <textarea class="form-control workDescription" cols="40" id="workDescription" name="workDescription" rows="2"></textarea>
+            <span class="help-block" id="hint_workDescription">
+                Coloque uma breve descri&ccedil;&atilde;o desse posto.
+            </span>
         </div>
-        <div class="form-group ">
-        <label class="control-label " for="employingInstitution">
-            Institui&ccedil;&atilde;o Empregadora
-        </label>
-        <input class="form-control" id="employingInstitution" name="employingInstitution" type="text"/>
+    </div>
+    </section>
+    <div class="form-group">
+        <div>
+            <div class="btn btn-primary btn-lg" id="addWork">
+                <span class="glyphicon glyphicon-plus"></span>
+            </div>
         </div>
-        <div class="form-group ">
-        <label class="control-label " for="city">
-            Cidade
-        </label>
-        <input class="form-control" id="city" name="city" type="text"/>
-        <span class="help-block" id="hint_city">
-            Coloque a cidade onde exerceu/exerce este cargo.
-        </span>
-        </div>
-        <div class="form-group ">
-        <label class="control-label " for="workCountry">
-            Pa&iacute;s
-        </label>
-        <input class="form-control" id="workCountry" name="workCountry" type="text"/>
-        <span class="help-block" id="hint_workCountry">
-            Coloque o pa&iacute;s onde exerceu/exerce este posto.
-        </span>
-        </div>
-        <div class="form-group ">
-        <label class="control-label " for="workStartDate">
-            Data de In&iacute;cio
-        </label>
-        <input class="form-control" id="workStartDate" name="workStartDate" placeholder="DD/MM/AAAA" type="text"/>
-        <span class="help-block" id="hint_workStartDate">
-            Coloque a data de in&iacute;cio do exercicio desse posto.
-        </span>
-        </div>
-        <div class="form-group ">
-        <label class="control-label " for="workEndDate">
-            Data de T&eacute;rmino.
-        </label>
-        <input class="form-control" id="workEndDate" name="workEndDate" placeholder="DD/MM/AAAA" type="text"/>
-        <span class="help-block" id="hint_workEndDate">
-            Coloque a data de t&eacute;rmino do exerc&iacute;cio desse posto.
-        </span>
-        </div>
-        <div class="form-group ">
-        <label class="control-label " for="workDescription">
-            Descri&ccedil;&atilde;o
-        </label>
-        <textarea class="form-control" cols="40" id="workDescription" name="workDescription" rows="2"></textarea>
-        <span class="help-block" id="hint_workDescription">
-            Coloque uma breve descri&ccedil;&atilde;o desse posto.
-        </span>
     </div>
     <!-- FIM DA SEÇÃO 6 -->
 
     <!-- INICIO DA SEÇÃO 7 -->
     <h3 class="bg-info text-muted">7.INFORMAÇÃO COMPLEMENTAR(OPCIONAL):</h3>
     <div class="form-group" id="div_isImpairment">
-        <label class="control-label requiredField" for="isImpairment">
+        <label class="control-label" for="isImpairment">
             Voc&ecirc; tem alguma defici&ecirc;ncia ?
-            <span class="asteriskField">
-            *
-            </span>
         </label>
         <div class="">
             <label class="radio-inline">
@@ -491,21 +500,21 @@
             </label>
         </div>
     </div>
-     <div class="form-group ">
-      <label class="control-label" for="impairmentDetail">
-       Defici&ecirc;ncia
-      </label>
-      <textarea class="form-control" cols="40" id="impairmentDetail" name="impairmentDetail" rows="2" disabled></textarea>
-      <span class="help-block" id="hint_impairmentDetail">
-       Caso voc&ecirc; tem alguma defici&ecirc;ns, nos conte mais sobre ela no espa&ccedil;o acima.
-      </span>
-     </div>
-     <div class="form-group ">
-      <label class="control-label " for="needs">
-       Necessidades Especiais
-      </label>
-      <textarea class="form-control" cols="40" id="needs" name="needs" rows="2" disabled></textarea>
-     </div>
+    <div class="form-group ">
+        <label class="control-label" for="impairmentDetail">
+            Defici&ecirc;ncia
+        </label>
+        <textarea class="form-control" cols="40" id="impairmentDetail" name="impairmentDetail" rows="2" disabled></textarea>
+        <span class="help-block" id="hint_impairmentDetail">
+            Caso voc&ecirc; tem alguma defici&ecirc;ns, nos conte mais sobre ela no espa&ccedil;o acima.
+        </span>
+    </div>
+    <div class="form-group ">
+        <label class="control-label " for="needs">
+            Necessidades Especiais
+        </label>
+        <textarea class="form-control" cols="40" id="needs" name="needs" rows="2" disabled></textarea>
+    </div>
      <!-- FIM DA SEÇÃO 7 -->
 
      <div class="form-group">

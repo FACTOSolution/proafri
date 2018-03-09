@@ -29,6 +29,13 @@ $('#addAcademic').click(function() {
     $('#academicSection').append(newAcademicFields);
 })
 
+// Add One More Work
+$('#addWork').click(function() {
+    var newWorkFields = $('#workParent').clone();
+    $('#workSection').append(newWorkFields);
+})
+
+
 $(document).ready(function() {
     $('input[name=isImpairment]').change(function() {
         if ($('input[name=isImpairment]:checked').val() === 'true') {

@@ -9,6 +9,8 @@ function registerCandidate(e) {
 
     // Declaring variables that will hold array data
     var papers = [];
+    var academics = [];
+    var works = [];
     
     // Decalring variables that will hold temp values
     var isImpairment = false;
@@ -44,7 +46,87 @@ function registerCandidate(e) {
     for(i = 0; i < papersTitle.length; i++){
         papers.push({ title: papersTitle[i], year: papersYear[i] })
     }
+    if(papersTitle[0].length < 1) { papers.length=0; }
 
+    // Building Array of academic
+    var academicTitle = $('.degree').map(function() {
+        return this.value;
+    })
+    var academicInstitution = $('.academicInstitution').map(function() {
+        return this.value;
+    })
+    var academicCity = $('.academicCity').map(function() {
+        return this.value;
+    })
+    var academicCoutry = $('.academicCountry').map(function() {
+        return this.value;
+    })
+    var academicAverage = $('.academicAverage').map(function() {
+        return this.value;
+    })
+    var academicStartDate = $('.academicStartDate').map(function() {
+        return this.value;
+    })
+    var academicEndDate = $('.academicEndDate').map(function() {
+        return this.value;
+    })    
+    var academicStudy = $('.academicStudy').map(function() {
+        return this.value;
+    })
+    var academicProgramName = $('.academicProgramName').map(function() {
+        return this.value;
+    })
+    for(i = 0; i < academicTitle.length; i++) {
+        academics.push({ 
+            degreeObtained: academicTitle[i],
+            institution: academicInstitution[i],
+            city: academicCity[i],
+            country: academicCoutry[i],
+            average: academicAverage[i],
+            startDate: academicStartDate[i],
+            endDate: academicEndDate[i],
+            study: academicStudy[i],
+            programName: academicProgramName[i]
+        })
+    }
+    if(academicTitle[0].length < 1) { academics.length=0; }
+
+    // Building Array Of Work Experience
+    var officeHolder = $('.officeHolder').map(function() {
+        return this.value;
+    });
+    var employingInstitution = $('.employingInstitution').map(function() {
+        return this.value;
+    })
+    var workCity = $('.workCity').map(function() {
+        return this.value;
+    })
+    var workCountry = $('.workCountry').map(function() {
+        return this.value;
+    })
+    var workStartDate = $('.workStartDate').map(function() {
+        return this.value;
+    })
+    var workEndDate = $('.workEndDate').map(function() {
+        return this.value;
+    })
+    var workDescription = $('.workDescription').map(function() {
+        return this.value;
+    })
+    for(i = 0; i < officeHolder.length; i++) {
+        works.push({
+            officeHolder: officeHolder[i],
+            employingInstitution: employingInstitution[i],
+            city: workCity[i],
+            country: workCountry[i],
+            startDate: workStartDate[i],
+            endDate: workEndDate[i],
+            description: workDescription[i]
+        })
+    }
+    
+    if(officeHolder[0].length < 1) { works.length=0; }
+    
     axios.post('http://localhost:5000/users/', {
         country: country,
         name: name,
@@ -60,7 +142,9 @@ function registerCandidate(e) {
         impairment: impairment,
         programA: programA,
         programB: programB,
-        papers: papers     
+        papers: papers,
+        academicHistory: academics,
+        workExperience: works,
     })
     .then(function(response) {
         console.log("Enviado com sucesso");
