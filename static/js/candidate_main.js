@@ -147,10 +147,38 @@ function registerCandidate(e) {
         workExperience: works,
     })
     .then(function(response) {
-        console.log("Enviado com sucesso");
+        if(response.data.success == true) {
+            if(!alertify.ProAfri){
+                alertify.dialog('ProAfri',function factory(){
+                  return{
+                    main:function(message){
+                      this.message = message;
+                    },
+                    setup:function(){
+                        return { 
+                          buttons:[{text: "OK", key:27/*Esc*/}],
+                          focus: { element:0 },
+                          options: {
+                              title: 'ProAfri',
+                              modal: true,
+                              transition: 'fade',
+                              onclose: function() { window.location.replace('http://www.grupocoimbra.org.br/')}
+                          }
+                        };
+                    },
+                    prepare:function(){
+                      this.setContent(this.message);
+                    }
+                }});
+              }
+              //launch it.
+              alertify.ProAfri("Sua inscrição foi cadastrada com sucesso.");
+            console.log("Enviado com sucesso");
+        }
     })
     .catch(function(error) {
         console.log(error);
     })
 
+    e.preventDefault();
 }

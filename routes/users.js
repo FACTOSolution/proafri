@@ -15,21 +15,19 @@ router.post('/', function(req, res, next){
   newCand.save((err) => {
     if(err){
       console.log(err);
-      //return res.json({success: false, message: "Erro no cadastro algum campo requerido faltando. "});
-      res.render('confirmation', {
-        title: "Failure",
-        message: "Erro no cadastro algum campo requerido faltando."
-      });
+      return res.status(500).json({success: false, message: "Erro no cadastro algum campo requerido faltando. "});
+      // res.render('confirmation', {
+      //   title: "Failure",
+      //   message: "Erro no cadastro algum campo requerido faltando."
+      // });
     }else{
-      res.render('login', {
-        title: "Success",
-        message: "Adicionado com sucesso."
-      });
+      return res.status(200).json({success: true, message: "Candidato inserido com sucesso."});
+      // res.render('login', {
+      //   title: "Success",
+      //   message: "Adicionado com sucesso."
+      // });
     }
   });
-  // Make some thing 
-  // res.render('podepah', { title: 'SOh', message: 'Guardian > Fallen' });
-  // res.json({ title: 'SOh', message: 'Guardian > Fallen' });
 });
 
 module.exports = router;
