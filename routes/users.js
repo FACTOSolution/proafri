@@ -1,8 +1,47 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
+const path = require('path')
+const multer = require('multer');
+const upload = multer({
+  storage: multer.diskStorage({
+      destination: (req, file, callback) => {
+          callback(null, './public/');
+      },
+      filename: (req, file, callback) => {
+        callback(null, file.originalname + path.extname(file.originalname));
+      }   
+  }),
+  fileFilter: (req, file, callback) => {
+      var ext = path.extname(file.originalname);
+      if (ext !== '.pdf'){
+          return callback(new Error('Apenas PDFs são permitidos'), false);
+      }
+      callback(null, true);
+  }
+})
 
+var FileCandidate = require('../models/fileCandidate');
 var Candidate = require('../models/candidate');
+
+
+/**
+ * Add a File to server
+ */
+router.post('/upload_pdf', upload.single('pdf'), function(req, res, next) {
+  var newFile = new FileCandidate({
+    name: req.file.originalname,
+    path: req.file.path,
+  })
+  newFile.save((err, pdf) => {
+    if(err){
+      console.log(err);
+      return res.status(500).json({success: false, message: "Erro no upload do pdf"});
+    } else {
+      return res.status(200).json({success: true, message: "Arquivo inserido com sucesso.", id: pdf._id });
+    }
+  })
+})
 
 /**
  * Add a candidate to mongo

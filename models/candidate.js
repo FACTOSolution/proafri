@@ -1,6 +1,4 @@
 const mongoose = require('mongoose'); require('mongoose-type-email');
-const crate = require('mongoose-crate');
-const localFS = require('mongoose-crate-localfs');
 
 const Paper = require('./papers');
 const WorkExperience = require('./workExperience');
@@ -65,20 +63,17 @@ const candidateSchema = new mongoose.Schema({
         ref: 'Program',
         required: true
      },
-     programB: { 
+    programB: { 
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Program',
         required: true
-     },
-})
-
-candidateSchema.plugin(crate, {
-    storage: new localFS({
-        directory: '../public'
-    }),
-    fields: {
-        attachment: {}
+    },
+    pdf: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'FileCandidate',
+        required: true
     }
+    
 })
 
 module.exports = mongoose.model('Candidate', candidateSchema);

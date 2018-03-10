@@ -5,32 +5,33 @@
    
         <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 
-    <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+        <!-- JavaScript -->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css"/>    
-        
-	<link rel="stylesheet" href="../css/bootstrap-iso.css" /> 
+        <!-- CSS -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
+        <!-- Default theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
+        <!-- Semantic UI theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css"/>
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css"/>    
+        <link rel="stylesheet" href="../css/footer-distributed.css">    
+        <link rel="stylesheet" href="../css/bootstrap-iso.css" /> 
 
         <!--Font Awesome (added because you use icons in your prepend/append)-->
         <link rel="stylesheet" href="../css/font-awesome.min.css" />
 
-	<!-- Custom Style -->
-'	<link rel="stylesheet" href="../css/style.css" /> 
+        <!-- Custom Style -->
+    '	<link rel="stylesheet" href="../css/style.css" /> 
 
         <!-- Inline CSS based on choices in "Settings" tab -->
         <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Impact, Charcoal, sans-serif; color: #2033bc}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: #ffffff !important;} .asteriskField{color: red;}.bootstrap-iso form .input-group-addon {color:#555555; background-color: #c8c8c8; border-radius: 4px; padding-left:12px}</style>
+        <style> img { max-width: 100%; max-height: 100%; }</style>
 
         <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
 
-	<meta charset="utf-8">
+        <meta charset="utf-8">
     </head>
 <body>
 <div class="bootstrap-iso">
@@ -561,7 +562,17 @@
             estou de acordo com a publicação do meu nome.</p>
     </div>
      <!-- FIM DA SEÇÃO 7 -->
-
+     
+    <!-- Início do envio de arquivo -->
+    <div class="form-group">
+        <label class="control-label" for="file">
+            Anexos
+        </label>
+        <input class= id="file" name="file" id='file' required type="file"/>
+        Anexe aqui o arquivo em PDF, contendo a documentação exigida pelo Edital.
+    </div>
+    <!-- Fim do envio de arquivo -->
+    <br><br>
      <div class="form-group">
       <div>
        <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">
@@ -574,6 +585,26 @@
   </div>
  </div>
 </div>
+<footer class="footer-distributed">
+
+    <div class="footer-right">
+
+        <a href="http://factos.ufpi.br" target="_blank"><img src="../img/factos_white.png" /></a>
+        <a href="http://www.grupocoimbra.org.br/" target="_blank"><img src="../img/gcub.jpg"/></a>
+
+    </div>
+
+    <div class="footer-left">
+
+        <p class="footer-links">
+            <a href="http://factos.ufpi.br" target="_blank">Desenvolvido por FACTOS</a>
+        </p>
+
+        <p>Factos&copy; 2018</p>
+    </div>
+
+</footer>
+
 <script src="./css/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/candidate_main.js"></script>

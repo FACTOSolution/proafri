@@ -126,59 +126,75 @@ function registerCandidate(e) {
     }
     
     if(officeHolder[0].length < 1) { works.length=0; }
-    
-    axios.post('http://localhost:5000/users/', {
-        country: country,
-        name: name,
-        address: address,
-        email: email,
-        tel: tel,
-        gender: gender,
-        dob: dob,
-        civilState: civilState,
-        passport: passport,
-        language: language,
-        languageExamPoints: languageExamPoints,
-        impairment: impairment,
-        programA: programA,
-        programB: programB,
-        papers: papers,
-        academicHistory: academics,
-        workExperience: works,
-    })
-    .then(function(response) {
-        if(response.data.success == true) {
-            if(!alertify.ProAfri){
-                alertify.dialog('ProAfri',function factory(){
-                  return{
-                    main:function(message){
-                      this.message = message;
-                    },
-                    setup:function(){
-                        return { 
-                          buttons:[{text: "OK", key:27/*Esc*/}],
-                          focus: { element:0 },
-                          options: {
-                              title: 'ProAfri',
-                              modal: true,
-                              transition: 'fade',
-                              onclose: function() { window.location.replace('http://www.grupocoimbra.org.br/')}
-                          }
-                        };
-                    },
-                    prepare:function(){
-                      this.setContent(this.message);
-                    }
-                }});
-              }
-              //launch it.
-              alertify.ProAfri("Sua inscrição foi cadastrada com sucesso.");
-            console.log("Enviado com sucesso");
+
+    // Sending the pdf first and retrieve his unique id
+    var formData = new FormData();
+    var imageFile = document.querySelector('#file')
+    formData.append('pdf', imageFile.files[0]);
+    axios.post('http://localhost:5000/users/upload_pdf', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
         }
+    })
+    .then(function(response){
+            axios.post('http://localhost:5000/users/', {
+            country: country,
+            name: name,
+            address: address,
+            email: email,
+            tel: tel,
+            gender: gender,
+            dob: dob,
+            civilState: civilState,
+            passport: passport,
+            language: language,
+            languageExamPoints: languageExamPoints,
+            impairment: impairment,
+            programA: programA,
+            programB: programB,
+            papers: papers,
+            academicHistory: academics,
+            workExperience: works,
+            pdf: response.data.id
+        })
+        .then(function(response) {
+            if(response.data.success == true) {
+                if(!alertify.ProAfri){
+                    alertify.dialog('ProAfri',function factory(){
+                    return{
+                        main:function(message){
+                        this.message = message;
+                        },
+                        setup:function(){
+                            return { 
+                            buttons:[{text: "OK", key:27/*Esc*/}],
+                            focus: { element:0 },
+                            options: {
+                                title: 'ProAfri',
+                                modal: true,
+                                transition: 'fade',
+                                onclose: function() { window.location.replace('http://www.grupocoimbra.org.br/')}
+                            }
+                            };
+                        },
+                        prepare:function(){
+                        this.setContent(this.message);
+                        }
+                    }});
+                }
+                //launch it.
+                alertify.ProAfri("Sua inscrição foi cadastrada com sucesso.");
+                console.log("Enviado com sucesso");
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
     })
     .catch(function(error) {
         console.log(error);
     })
-
+    
+    
     e.preventDefault();
 }
