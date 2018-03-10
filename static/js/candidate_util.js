@@ -35,7 +35,6 @@ $('#addWork').click(function() {
     $('#workSection').append(newWorkFields);
 })
 
-
 $(document).ready(function() {
     $('input[name=isImpairment]').change(function() {
         if ($('input[name=isImpairment]:checked').val() === 'true') {
