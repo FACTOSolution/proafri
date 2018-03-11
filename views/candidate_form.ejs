@@ -71,7 +71,7 @@
             *
             </span>
         </label>
-        <select class="select form-control" id="programB" name="programB">
+        <select class="select form-control" id="programB" name="programB" required onChange="matchRegion(this);">
             <% for (var i = 0; i < programs.mr.length; i++) { %>
                 <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
             <% } %>
@@ -575,7 +575,7 @@
     <br><br>
      <div class="form-group">
       <div>
-       <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">
+       <button class="btn btn-primary btn-lg btn-block" name="submit" id="enviar" type="submit">
         Enviar
        </button>
       </div>
@@ -606,6 +606,7 @@
 </footer>
 
 <script src="./css/jquery.min.js"></script>
+<script src="../js/notify.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/candidate_main.js"></script>
 <script src="../js/candidate_util.js"></script>
