@@ -51,18 +51,13 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
-                    <h5 class="centered">Marcel Newman</h5>
+                    <h5 class="centered"><%= adminName %></h5>
                     
                   <li class="sub-menu">
                       <a class="active" href="javascript:;" >
                           <i class="fa fa-th"></i>
                           <span>Inscrições</span>
                       </a>
-                      <ul class="sub">
-                          <li class="active"><a  href="basic_table.html">Basic Table</a></li>
-                          <li><a  href="responsive_table.html">Responsive Table</a></li>
-                      </ul>
                   </li>
               </ul>
               <!-- sidebar menu end-->
@@ -87,17 +82,22 @@
                                   <th><i class="fas fa-user"></i> Nome</th>
                                   <th class="hidden-phone"><i class="fas fa-university"></i> Universidade</th>
                                   <th><i class="fa fa-bookmark"></i> Programa</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
                                   <th></th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>12120.00$ </td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                              </tr>
+                                <% for (var i = 0; i < data.length; i++) { %>
+                                    <tr>
+                                        <td><a href="basic_table.html#"><%= data[i].name %></a></td>
+                                        <td class="hidden-phone"><%= adminName %></td>
+                                        <% if(data[i].programA.university == adminName) { %>
+                                            <td><%= data[i].programA.name %></td>
+                                        <% } %>
+                                        <% if(data[i].programB.university == adminName) { %>
+                                            <td><%= data[i].programB.name %></td>
+                                        <% } %>
+                                    </tr>
+                                <% } %>    
                               </tbody>
                           </table>
                       </div><!-- /content-panel -->

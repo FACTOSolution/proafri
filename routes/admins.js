@@ -3,6 +3,7 @@ const router = express.Router();
 const Candidate = require('../models/candidate');
 const Admin = require('../models/admin');
 const Users = require('../models/candidate');
+const Program = require('../models/programs')
 const jwt = require('jsonwebtoken');
 const config = require('../config.js');
 const app = express();
@@ -15,11 +16,11 @@ app.set('secret', config.secret);
  */
 router.use(function(req, res, next){
     let token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies['token'];
-    console.log("Token ", token);
     if(token){
         jwt.verify(token, app.get('secret'), function(err, decoded){
             if(err) {
-                res.rendirect('/');
+                res.clearCookie('token');
+                res.redirect('/admin');
                 //return res.json({success: false, message: 'Token invalido.'});
             }
             else{
@@ -51,28 +52,41 @@ router.get('/', function(req, res, next) {
  */
 router.get('/page', function(req, res, next){
   if(req.auth == true){
-    Users.find({}, function(err, users){
-        if(err) console.log(err);
-        if(!users){
-          /*  
-          res.json({
-            success: true,
-            data: {users: []}
-          });
-          */
-         res.render('listCandidates', {
-             title: "Pagina com todos os cadidatos",
-             message: "Nenhum usuario",
-             data: []
-         });
-        } else{
+    var admin = jwt.verify(req.cookies['token'], app.get('secret'))
+    var ids = []
+    Program.find({ university: admin.university }, '_id', function (err, programs) {
+        // Building Array
+        programs.forEach((program) => {
+            ids.push(program._id);
+        })
+        Users.find({ $or: [ { programA: { $in: ids } }, { programB: { $in: ids } } ]} )
+            .populate('programA')
+            .populate('programB')
+            .exec(function(err, users) { 
+            if(err) console.log(err);
+            if(!users){
+            /*  
+            res.json({
+                success: true,
+                data: {users: []}
+            });
+            */
             res.render('listCandidates', {
                 title: "Pagina com todos os cadidatos",
-                message: "Todos os usuarios",
-                data: users
+                message: "Nenhum usuario",
+                data: [],
+                adminName: admin.university
             });
-        }
-      });
+            } else{
+                res.render('listCandidates', {
+                    title: "Pagina com todos os cadidatos",
+                    message: "Todos os usuarios",
+                    data: users,
+                    adminName: admin.university
+                });
+            }
+        });
+    })
   }else{
     res.render('index', {
         title: "Login",
@@ -108,7 +122,8 @@ router.post('/', function(req, res){
                         //     }, app.get('secret'), {expiresIn: 60*30}));
                         res.cookie('token',  jwt.sign({
                             _id: admin._id,
-                            name: admin.name
+                            name: admin.name,
+                            university: admin.university
                         }, app.get('secret'), {expiresIn: 60*30}));
                         res.redirect('/admin/page');
                         /*

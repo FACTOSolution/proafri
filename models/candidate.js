@@ -3,6 +3,7 @@ const mongoose = require('mongoose'); require('mongoose-type-email');
 const Paper = require('./papers');
 const WorkExperience = require('./workExperience');
 const AcademicHistory = require('./academicHistory');
+const Program = require('../models/programs')
 
 const candidateSchema = new mongoose.Schema({
     country: {
@@ -75,5 +76,15 @@ const candidateSchema = new mongoose.Schema({
     }
     
 })
+
+candidateSchema.statics.findByProgram = function(program, callback) {
+    var query = this.find()
+
+    Program.find({ university: program }, function (err, programs) {
+        query.where({ $or: [ { programA: { $in: programs } } ], $or: [ { programB: { $in: programs } } ] })
+            .exec(callback)
+    })
+    return query;
+}
 
 module.exports = mongoose.model('Candidate', candidateSchema);
