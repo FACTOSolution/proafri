@@ -52,12 +52,12 @@
             *
             </span>
         </label>
-        <select class="select form-control" id="programA" name="programA" required>
+        <select class="select form-control" id="programA" name="programA" required onChange='matchRegion(this);'> 
             <% for (var i = 0; i < programs.mr.length; i++) { %>
-                <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
+                <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
             <% } %>
             <% for (var i = 0; i < programs.dc.length; i++) { %>
-                <option value=<%= programs.dc[i]._id %>><%= programs.dc[i].name %></option>
+                <option value="<%= programs.dc[i]._id %>:<%= programs.dc[i].region %>"><%= programs.dc[i].name %></option>
             <% } %>
         </select>
         <span class="help-block" id="hint_programA">
@@ -73,10 +73,10 @@
         </label>
         <select class="select form-control" id="programB" name="programB">
             <% for (var i = 0; i < programs.mr.length; i++) { %>
-                <option value=<%= programs.mr[i]._id %>><%= programs.mr[i].name %></option>
+                <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
             <% } %>
             <% for (var i = 0; i < programs.dc.length; i++) { %>
-                <option value=<%= programs.dc[i]._id %>><%= programs.dc[i].name %></option>
+                <option value="<%= programs.dc[i]._id %>:<%= programs.dc[i].region %>"><%= programs.dc[i].name %></option>
             <% } %>
         </select>
         <span class="help-block" id="hint_programB">
@@ -609,5 +609,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/candidate_main.js"></script>
 <script src="../js/candidate_util.js"></script>
+<script src="../js/candidate_validations.js"></script>
 </body>
 </html>
