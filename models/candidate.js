@@ -3,6 +3,7 @@ const mongoose = require('mongoose'); require('mongoose-type-email');
 const Paper = require('./papers');
 const WorkExperience = require('./workExperience');
 const AcademicHistory = require('./academicHistory');
+const ScholarShips = require('./scholarship')
 const Program = require('../models/programs')
 
 const candidateSchema = new mongoose.Schema({
@@ -59,6 +60,7 @@ const candidateSchema = new mongoose.Schema({
     papers: [Paper],
     workExperience: [WorkExperience],
     academicHistory: [AcademicHistory],
+    scholarships: [ScholarShips],
     programA: { 
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Program',

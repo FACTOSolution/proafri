@@ -153,7 +153,7 @@
 
                                     <li>
                                         <div class="task-title">
-                                            <span class="task-title-sp">Data De Nascimento - <%= candidate.dob %> </span>
+                                            <span class="task-title-sp">Data De Nascimento - <%= moment(candidate.dob).format('DD-MM-YYYY') %> </span>
                                             <div class="pull-right hidden-phone">
                                                 
                                             </div>
@@ -190,7 +190,7 @@
                                     
                                     <li>
                                         <div class="task-title">
-                                            <span class="task-title-sp">Data De Expiração Do Passaporte - <%= candidate.passport.expirationDate %> </span>
+                                            <span class="task-title-sp">Data De Expiração Do Passaporte - <%= moment(candidate.passport.expirationDate).format('DD-MM-YYYY') %> </span>
                                             <div class="pull-right hidden-phone">
                                                
                                             </div>

@@ -35,19 +35,25 @@ $('#addWork').click(function() {
     $('#workSection').append(newWorkFields);
 })  
 
+// Add One More Work
+$('#addScholarship').click(function() {
+    var newWorkFields = $('#workParent').clone();
+    $('#workSection').append(newWorkFields);
+})  
+
 $(document).ready(function() {
     $('input[name=isImpairment]').change(function() {
         if ($('input[name=isImpairment]:checked').val() === 'true') {
             $('#impairmentDetail').removeAttr('disabled');
             $('#needs').removeAttr('disabled');
+            $('#impairmentDetail').attr('required', 'required');
+            $('#needs').attr('required','required');
         }
         else {
+            $('#impairmentDetail').removeAttr('required');
+            $('#needs').removeAttr('required');
             $('#impairmentDetail').attr('disabled', 'disabled');
             $('#needs').attr('disabled','disabled');
         }
     })
 })
-
-function query(data){
-    console.log(data);
-}

@@ -7,8 +7,9 @@ const Program = require('../models/programs')
 const jwt = require('jsonwebtoken');
 const config = require('../config.js');
 const app = express();
-
 const util = require('../util/util')
+
+var moment = require('moment')
 
 /* GET users listing. */
 app.set('secret', config.secret);
@@ -60,6 +61,7 @@ router.get('/page/:_id', function(req, res, next) {
         .exec(function(err, user) { 
         if(err) { return next(err); }    
         res.render('candidate', {
+            moment: moment,
             adminName: admin.university,
             candidate: user
         });

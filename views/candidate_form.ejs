@@ -56,11 +56,11 @@
             </label>
             <div class="">
                 <label class="radio-inline">
-                <input name="radio" type="radio" value="Mestrado" id="radioMestrado" required onclick="query();"  />
+                <input name="radio" type="radio" value="Mestrado" id="radioMestrado" required onclick="query('mr');"  />
                 Mestrado
                 </label>
                 <label class="radio-inline">
-                <input name="radio" type="radio" value="Doutorado" id="radioDoutorado"/>
+                <input name="radio" type="radio" value="Doutorado" id="radioDoutorado" onclick="query('dc')"/>
                 Doutorado
                 </label>
             </div>
@@ -77,12 +77,6 @@
             </span>
         </label>
         <select class="select form-control" id="programA" name="programA" required onChange='matchRegion(this);' disabled> 
-            <% for (var i = 0; i < programs.mr.length; i++) { %>
-                <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
-            <% } %>
-            <% for (var i = 0; i < programs.dc.length; i++) { %>
-                <option value="<%= programs.dc[i]._id %>:<%= programs.dc[i].region %>"><%= programs.dc[i].name %></option>
-            <% } %>
         </select>
         <span class="help-block" id="hint_programA">
             Seleciona o programa que voc&ecirc; deseja aplicar.
@@ -96,12 +90,6 @@
             </span>
         </label>
         <select class="select form-control" id="programB" name="programB" required onChange="matchRegion(this);" disabled>
-            <% for (var i = 0; i < programs.mr.length; i++) { %>
-                <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
-            <% } %>
-            <% for (var i = 0; i < programs.dc.length; i++) { %>
-                <option value="<%= programs.dc[i]._id %>:<%= programs.dc[i].region %>"><%= programs.dc[i].name %></option>
-            <% } %>
         </select>
         <span class="help-block" id="hint_programB">
             Seleciona o programa que voc&ecirc; deseja aplicar.
@@ -334,7 +322,7 @@
         <div class="panel panel-info" id="academicParent">
             <div class="panel-heading">Título Obtido</div>
             <div class="form-group panel-body" style="padding-bottom:0px">
-                <label class="control-label " for="degree">
+                <label class="control-label" for="degree">
                     T&iacute;tulo Obtido.
                 </label>
                 <input class="form-control degree" id="degree" name="degree" type="text"/>
@@ -425,9 +413,9 @@
     </div>
     <!-- FIM DA SEÇÃO 4 -->
 
-    <!-- INICIO DA SEÇÃO 5 -->
+    <!-- INICIO DA SEÇÃO 5.1 -->
     <section id="paperSection">
-    <h3 class="bg-info text-muted">5.PUBLICAÇÕES/PRÊMIOS/BOLSAS</h3>
+    <h3 class="bg-info text-muted">5.1.PUBLICAÇÕES/PRÊMIOS</h3>
     <div class="panel panel-info">
         <div class="panel-heading">Publicação/Prêmio/Bolsa</div>
         <div class="form-group panel-body" style="padding-bottom:0px">
@@ -457,7 +445,67 @@
             </div>
         </div>
     </div>
-    <!-- FIM DA SEÇÃO 5 -->
+    <!-- FIM DA SEÇÃO 5.1 -->
+
+    <!-- INICIO DA SEÇÃO 5.2 -->
+    <section id="scholarshipSection">
+    <h3 class="bg-info text-muted">5.2.BOLSAS</h3>
+    <div class="panel panel-info">
+        <div class="form-group panel-body">
+            <label class="control-label " for="scholarshipInstitution">
+                Nome Da Institui&ccedil;&atilde;o
+            </label>
+            <input class="form-control scholarshipInstitution" id="scholarshipInstitution" name="scholarshipInstitution" type="text"/>
+            <span class="help-block" id="hint_scholarshipInstitution">
+                Coloque o nome da institui&ccedil;&atilde;o onde voc&ecirc; recebeu a bolsa.
+            </span>
+            </div>
+            <div class="form-group panel-body">
+            <label class="control-label " for="scholarshipPurpose">
+                Prop&oacute;sito
+            </label>
+            <input class="form-control scholarshipPurpose" id="scholarshipPurpose" name="scholarshipPurpose" type="text"/>
+            <span class="help-block" id="hint_scholarshipPurpose">
+                Coloque qual foi o prop&oacute;sito desta bolsa.
+            </span>
+            </div>
+            <div class="form-group panel-body">
+            <label class="control-label " for="scholarshipCountry">
+                Pa&iacute;s
+            </label>
+            <input class="form-control scholarshipCountry" id="scholarshipCountry" name="scholarshipCountry" type="text"/>
+            <span class="help-block" id="hint_scholarshipCountry">
+                Coloque o pa&iacute;s onde voc&ecirc; recebeu a bolsa.
+            </span>
+            </div>
+            <div class="form-group panel-body">
+            <label class="control-label " for="scholarshipStartDate">
+                Data De In&iacute;cio
+            </label>
+            <input class="form-control scholarshipStartDate" id="scholarshipStartDate" name="scholarshipStartDate" placeholder="DD/MM/AAAA" type="text"/>
+            <span class="help-block" id="hint_scholarshipStartDate">
+                Coloque a data de in&iacute;cio.
+            </span>
+            </div>
+            <div class="form-group  panel-body">
+            <label class="control-label " for="date1">
+                Data De T&eacute;rmino
+            </label>
+            <input class="form-control scholarshipEndDate" id="scholarshipEndDate" name="date1" placeholder="DD/MM/AAAA" type="text"/>
+            <span class="help-block" id="hint_date1">
+                Coloque a data de t&eacute;rmino.
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <div class="btn btn-primary btn-lg" id="addScholarship">
+                <span class="glyphicon glyphicon-plus"></span>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- FIM DA SEÇÃO 5.2 --> 
 
     <!-- INICIO DA SEÇÃO 6 -->
     <section id="workSection">
@@ -635,5 +683,6 @@
 <script src="../js/candidate_main.js"></script>
 <script src="../js/candidate_util.js"></script>
 <script src="../js/candidate_validations.js"></script>
+<script src="../js/extravalidation.js"></script>
 </body>
 </html>

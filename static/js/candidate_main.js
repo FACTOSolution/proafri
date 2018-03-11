@@ -11,6 +11,7 @@ function registerCandidate(e) {
     var papers = [];
     var academics = [];
     var works = [];
+    var scholarships = [];
     
     // Decalring variables that will hold temp values
     var isImpairment = false;
@@ -124,8 +125,34 @@ function registerCandidate(e) {
             description: workDescription[i]
         })
     }
-    
     if(officeHolder[0].length < 1) { works.length=0; }
+
+    // Building the array of scholarships
+    var scholarInstitution = $('.scholarshipInstitution').map(function() {
+        return this.value;
+    })
+    var scholarPurpose = $('.scholarshipPurpose').map(function() {
+        return this.value;
+    })
+    var scholarCountry = $(".scholarshipCountry").map(function() {
+        return this.value;
+    })
+    var scholarStart = $('.scholarshipStartDate').map(function() {
+        return this.value;
+    })
+    var scholarEnd = $('.scholarshipEndDate').map(function() {
+        return this.value;
+    })
+    for(i = 0; i < scholarInstitution.length; i++) {
+        scholarships.push({
+            institution: scholarInstitution[i],
+            purpose: employingInstitution[i],
+            country: scholarCountry[i],
+            startDate: scholarStart[i],
+            endDate: scholarEnd[i]
+        })
+    }
+    if(schollarInstitution[0].length < 1) { scholarships.length=0; }
 
     // Sending the pdf first and retrieve his unique id
     var formData = new FormData();
@@ -155,7 +182,8 @@ function registerCandidate(e) {
             papers: papers,
             academicHistory: academics,
             workExperience: works,
-            pdf: response.data.id
+            pdf: response.data.id,
+            scholarships: scholarships
         })
         .then(function(response) {
             if(response.data.success == true) {
