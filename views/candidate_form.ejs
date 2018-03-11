@@ -46,13 +46,37 @@
     <div class="form-group ">
         <h1 class="bg-primary">Seção I</h1>
         <h3 class="bg-info text-muted">Seleção do Programa de Estudos</h3>
+        <!-- INICIO DA SEÇÂO DE ESCOLHA DE NIVEL -->
+        <div class="form-group" id="div_radio">
+            <label class="control-label requiredField" for="radio">
+                Escolha o Seu N&iacute;vel Pretendido.
+                <span class="asteriskField">
+                *
+                </span>
+            </label>
+            <div class="">
+                <label class="radio-inline">
+                <input name="radio" type="radio" value="Mestrado" id="radioMestrado" required onclick="query();"  />
+                Mestrado
+                </label>
+                <label class="radio-inline">
+                <input name="radio" type="radio" value="Doutorado" id="radioDoutorado"/>
+                Doutorado
+                </label>
+            </div>
+            </div>
+            <div class="form-group">
+        </div>
+        <!-- FIM DA SEÇÃO DE ESCOLHA DE NIVEL -->
+
+
         <label class="control-label requiredField" for="programA">
             Programa 1
             <span class="asteriskField">
             *
             </span>
         </label>
-        <select class="select form-control" id="programA" name="programA" required onChange='matchRegion(this);'> 
+        <select class="select form-control" id="programA" name="programA" required onChange='matchRegion(this);' disabled> 
             <% for (var i = 0; i < programs.mr.length; i++) { %>
                 <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
             <% } %>
@@ -71,7 +95,7 @@
             *
             </span>
         </label>
-        <select class="select form-control" id="programB" name="programB" required onChange="matchRegion(this);">
+        <select class="select form-control" id="programB" name="programB" required onChange="matchRegion(this);" disabled>
             <% for (var i = 0; i < programs.mr.length; i++) { %>
                 <option value="<%= programs.mr[i]._id %>:<%= programs.mr[i].region %>"><%= programs.mr[i].name %></option>
             <% } %>

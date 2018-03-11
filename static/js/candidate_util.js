@@ -33,7 +33,7 @@ $('#addAcademic').click(function() {
 $('#addWork').click(function() {
     var newWorkFields = $('#workParent').clone();
     $('#workSection').append(newWorkFields);
-})
+})  
 
 $(document).ready(function() {
     $('input[name=isImpairment]').change(function() {
@@ -47,3 +47,7 @@ $(document).ready(function() {
         }
     })
 })
+
+function query(data){
+    console.log(data);
+}

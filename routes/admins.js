@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 const config = require('../config.js');
 const app = express();
 
+const util = require('../util/util')
+
 /* GET users listing. */
 app.set('secret', config.secret);
 
@@ -54,6 +56,7 @@ router.get('/page/:_id', function(req, res, next) {
     Users.findById(req.params['_id'])
         .populate('programA')
         .populate('programB')
+        .populate('pdf')
         .exec(function(err, user) { 
         if(err) { return next(err); }    
         res.render('candidate', {
@@ -171,11 +174,14 @@ router.post('/', function(req, res){
     }
 });
 
-router.get('/pdf/:_id', function(req, res) {
-    res.pdfFromHTML({
-        filename: 'generated.pdf',
-        htmlContent: '<html><body>ASDF</body></html>',
+router.get('/pdf/:_id', function(req, res, next) {
+    Users.findById(req.params['_id'], function(err, candidate) {
+        if(err) { return next(err) }
+        res.pdfFromHTML({
+            filename: 'generated.pdf',
+            htmlContent: util.buildhtml(candidate),
     });
+    })
 });
 
 module.exports = router;

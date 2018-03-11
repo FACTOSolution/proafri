@@ -1,3 +1,18 @@
+$(document).ready(function() {
+    $('#programA').prop('selectedIndex', -1);
+    $('#programB').prop('selectedIndex', -1);
+})    
+
+$('#radioMestrado').click(function() {
+    $('#programA').removeAttr('disabled')
+    $('#programB').removeAttr('disabled')
+})
+
+$('#radioDoutorado').click(function() {
+    $('#programA').removeAttr('disabled')
+    $('#programB').removeAttr('disabled')
+})
+
 function matchRegion(sel){
     var regionA = sel.value.split(":");
     // RegionA is in regionA[1]

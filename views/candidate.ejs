@@ -208,7 +208,7 @@
 
                                     <li>
                                         <div class="task-title">
-                                            <span class="task-title-sp">Outras Linguas - <%= candidate.language.others %> </span>
+                                            <span class="task-title-sp">Outras Linguas - <%= candidate.language.foreign %> </span>
                                             <div class="pull-right hidden-phone">
                                                 
                                             </div>
@@ -238,6 +238,24 @@
                                             <span class="task-title-sp">Programa Escolhido - <%= candidate.programA.name %> </span>
                                             <div class="pull-right hidden-phone">
                                                 
+                                            </div>
+                                        </div>
+                                    </li>    
+
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Informações Adcionais</span>
+                                            <div class="pull-right hidden-phone">
+                                                <a class="btn btn-success btn-xs" href='../pdf/<%= candidate._id %>'><i class="fas fa-download"></i></a>
+                                            </div>
+                                        </div>
+                                    </li>    
+
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Anexos Em PDF</span>
+                                            <div class="pull-right hidden-phone">
+                                                <a class="btn btn-success btn-xs" href='../../<%= candidate.pdf.name %>'><i class="fas fa-download"></i></a>
                                             </div>
                                         </div>
                                     </li>    
