@@ -88,7 +88,7 @@
                               <tbody>
                                 <% for (var i = 0; i < data.length; i++) { %>
                                     <tr>
-                                        <td><a href="basic_table.html#"><%= data[i].name %></a></td>
+                                        <td><a href='page/<%= data[i]._id %>'><%= data[i].name %></a></td>
                                         <td class="hidden-phone"><%= adminName %></td>
                                         <% if(data[i].programA.university == adminName) { %>
                                             <td><%= data[i].programA.name %></td>

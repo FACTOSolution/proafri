@@ -23,8 +23,8 @@ function registerCandidate(e) {
     gender = $('select[name=gender]').val();
     dob = $('#dob').val();
     civilState = $('#civilState').val();
-    programA = $('select[name=programA]').val()
-    programB = $('select[name=programB]').val()
+    programA = $('select[name=programA]').val().split(':')
+    programB = $('select[name=programB]').val().split(':')
 
     // Testing if the candidate is impairment
     if($('input[name=isImpairment]:checked').val() === 'true') { isImpairment = true; }
@@ -150,8 +150,8 @@ function registerCandidate(e) {
             language: language,
             languageExamPoints: languageExamPoints,
             impairment: impairment,
-            programA: programA,
-            programB: programB,
+            programA: programA[0],
+            programB: programB[0],
             papers: papers,
             academicHistory: academics,
             workExperience: works,

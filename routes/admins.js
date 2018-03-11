@@ -47,6 +47,24 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * List a candidate in detail
+ */
+router.get('/page/:_id', function(req, res, next) {
+    var admin = jwt.verify(req.cookies['token'], app.get('secret'));
+    Users.findById(req.params['_id'])
+        .populate('programA')
+        .populate('programB')
+        .exec(function(err, user) { 
+        if(err) { return next(err); }    
+        res.render('candidate', {
+            adminName: admin.university,
+            candidate: user
+        });
+    });
+    
+})
+
+/**
  * Lists all inscribers
  * Send a page with all inscribers objects
  */
@@ -153,5 +171,11 @@ router.post('/', function(req, res){
     }
 });
 
+router.get('/pdf/:_id', function(req, res) {
+    res.pdfFromHTML({
+        filename: 'generated.pdf',
+        htmlContent: '<html><body>ASDF</body></html>',
+    });
+});
 
 module.exports = router;

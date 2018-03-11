@@ -9,6 +9,7 @@ var config = require('./config.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var admins = require('./routes/admins');
+var pdf = require('express-pdf');
 
 var app = express();
 var Candidate = require('./models/candidate');
@@ -39,9 +40,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'static')));
 
+app.use(pdf)
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/admin', admins);
+
 
 // secret
 app.set('secret', config.secret);
