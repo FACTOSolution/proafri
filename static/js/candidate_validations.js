@@ -21,6 +21,8 @@ function query(degree) {
             response.data.forEach(element => {
                 $('#programA').append('<option value=' + element._id + ':' + element.region + ">" + element.name + "</option>")
                 $('#programB').append('<option value=' + element._id + ':' + element.region + ">" + element.name + "</option>")
+                $('#programA').prop('selectedIndex', -1);
+                $('#programB').prop('selectedIndex', -1);
             });
         })
         .catch(function(error) {
@@ -29,6 +31,7 @@ function query(degree) {
 }
 
 function matchRegion(sel){
+    console.log('entrou')
     var regionA = sel.value.split(":");
     // RegionA is in regionA[1]
     var regionB = $('#programB').val().split(":");
@@ -38,7 +41,7 @@ function matchRegion(sel){
     {
         $('#enviar').attr('disabled','disabled');
         $('#programA').notify(
-            'Não pode ser selecionado dois programas da mesma região.', 
+            'Não pode ser selecionado dois programas da mesma região ou iguais.', 
             'warn',
             { position: 'right'}
         );
@@ -51,6 +54,11 @@ function matchRegion(sel){
         );
     }
     else {
+        $('#programA').notify(
+            'Sua seleção está ok.', 
+            'info',
+            { position: 'right'}
+        );
         $('#enviar').removeAttr('disabled');
     }
 }

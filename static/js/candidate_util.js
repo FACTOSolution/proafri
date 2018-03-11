@@ -37,8 +37,8 @@ $('#addWork').click(function() {
 
 // Add One More Work
 $('#addScholarship').click(function() {
-    var newWorkFields = $('#workParent').clone();
-    $('#workSection').append(newWorkFields);
+    var newScholarFields = $('#scholarParent').clone();
+    $('#scholarshipSection').append(newScholarFields);
 })  
 
 $(document).ready(function() {
