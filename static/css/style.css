@@ -1,9 +1,95 @@
+/*! ********** FONTS *********************************/
+.bootstrap-iso .box *{
+  font-family: Gidolinya, sans-serif;
+}
+.bootstrap-iso .box .formden_header h2, 
+.bootstrap-iso .box .formden_header p,
+.bootstrap-iso .box form{
+  color: #4C5D8D;
+  font-family: Gidolinya, sans-serif;
+}
+/*! ********** END FONTS ******************************/
+
+
 .box{
-  border: 2px solid #c2d1de;
-  /*! border-radius: 2% 2% 2% 2%; */
+  border-radius: 10px;
   box-shadow: 0px 0px 6px 6px #dbdbdb;
+  padding: 10px;
 }
 
 .input-panel {
   padding-top: 0px;
 }
+
+.bootstrap-iso .bg-primary{
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bootstrap-iso .text-muted{
+  color: #4C5D8D;
+  background-color: transparent;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.bootstrap-iso .box h3::before{
+  content: '';
+  width: 100%;
+  height: 2px;
+  margin-bottom:  5%;
+  background-color: #4C5D8D;
+  position: relative;
+  /*! text-decoration-line: 10px; */
+  display: block;
+}
+
+.bootstrap-iso .box div .bg-info::before{
+  display: none; 
+}
+
+.bootstrap-iso .box form .bg-info:nth-child(4):before{
+  display: none;
+}
+
+.bootstrap-iso .box h3{
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.box .head{
+  font-size: 3em;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  background: -moz-linear-gradient(left, #4C8D84, #19A5BC);
+  background: linear-gradient(left, #4C8D84, #19A5BC);
+  background: -o-linear-gradient(left, #4C8D84, #19A5BC);
+  background: -webkit-linear-gradient(left, #4C8D84, #19A5BC);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.box .incricao, .bootstrap-iso .bg-primary{
+  background: linear-gradient(left, #4C5D8D, #020405);
+  background: -moz-linear-gradient(left, #4C5D8D, #020405);
+  background: -o-linear-gradient(left, #4C5D8D, #020405);
+  background: -webkit-linear-gradient(left, #4C5D8D, #020405);
+}
+
+
+.box .incricao{
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  
+  border-radius: 0px 0px 5px 5px;
+  width: 100%;
+  
+}
+
+
+.bootstrap-iso .box input[name="acordo1"]{
+  color: black;
+}
+
