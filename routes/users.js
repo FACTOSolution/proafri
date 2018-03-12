@@ -9,7 +9,7 @@ const upload = multer({
           callback(null, './public/');
       },
       filename: (req, file, callback) => {
-        callback(null, file.originalname + path.extname(file.originalname));
+        callback(null, file.originalname);
       }   
   }),
   fileFilter: (req, file, callback) => {
