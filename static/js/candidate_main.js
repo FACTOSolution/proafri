@@ -146,13 +146,13 @@ function registerCandidate(e) {
     for(i = 0; i < scholarInstitution.length; i++) {
         scholarships.push({
             institution: scholarInstitution[i],
-            purpose: employingInstitution[i],
+            purpose: scholarPurpose[i],
             country: scholarCountry[i],
             startDate: scholarStart[i],
             endDate: scholarEnd[i]
         })
     }
-    if(schollarInstitution[0].length < 1) { scholarships.length=0; }
+    if(scholarInstitution[0].length < 1) { scholarships.length=0; }
 
     // Sending the pdf first and retrieve his unique id
     var formData = new FormData();
