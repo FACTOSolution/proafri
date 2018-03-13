@@ -1,4 +1,6 @@
 const mongoose = require('mongoose'); require('mongoose-type-email');
+const shortid = require('shortid');
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const Paper = require('./papers');
 const WorkExperience = require('./workExperience');
@@ -10,6 +12,13 @@ const candidateSchema = new mongoose.Schema({
     country: {
         type: String,
         required: true
+    },
+    regId: {
+        type: String,
+        'default': shortid.generate
+    },
+    regNumber: {
+        type: Number
     },
     name: {
         type: String,
@@ -24,8 +33,7 @@ const candidateSchema = new mongoose.Schema({
         required: true,
     },
     email2: {
-        type: mongoose.SchemaTypes.Email,
-        required: true,
+        type: String,
     },
     tel: {
         mobile: { type: String, required: true },
@@ -93,5 +101,7 @@ candidateSchema.statics.findByProgram = function(program, callback) {
     })
     return query;
 }
+
+candidateSchema.plugin(AutoIncrement, { inc_field: 'regNumber' })
 
 module.exports = mongoose.model('Candidate', candidateSchema);
