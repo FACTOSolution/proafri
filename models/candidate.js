@@ -23,13 +23,18 @@ const candidateSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.Email,
         required: true,
     },
+    email2: {
+        type: mongoose.SchemaTypes.Email,
+        required: true,
+    },
     tel: {
         mobile: { type: String, required: true },
         fixed: { type: String, required: true }
     },
     gender: {
         type: String,
-        enum: ['masculino','feminino','outros']
+        enum: ['masculino','feminino','outros'],
+        required: true
     },
     dob: {
         type: Date,
@@ -45,7 +50,7 @@ const candidateSchema = new mongoose.Schema({
         expirationDate: { type: Date, required: true }
     },
     language: {
-        native: { type: String, required: true },
+        native: { type: String },
         foreign: [String]
     },
     languageExamPoints: {
