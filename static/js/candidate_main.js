@@ -220,7 +220,11 @@ function registerCandidate(e) {
         })
     })
     .catch(function(error) {
-        console.log(error);
+        $('#file').notify(
+            'Apenas PDF são permitidos',
+            'error',
+            { position: 'right'}
+        )
     })
     
     
