@@ -1,3 +1,8 @@
+@font-face{
+  font-family: Gidolinya;
+  src: url("../assets/fonts/gidolinya.ttf");
+}
+
 /*! ********** FONTS *********************************/
 .bootstrap-iso .box *{
   font-family: Gidolinya, sans-serif;
