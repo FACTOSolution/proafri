@@ -158,6 +158,7 @@ function registerCandidate(e) {
     var formData = new FormData();
     var imageFile = document.querySelector('#file')
     formData.append('pdf', imageFile.files[0]);
+    formData.append('email', email);
     axios.post('http://localhost:5000/users/upload_pdf', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'

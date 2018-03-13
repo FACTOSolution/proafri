@@ -9,7 +9,11 @@ const upload = multer({
           callback(null, './public/');
       },
       filename: (req, file, callback) => {
-        callback(null, file.originalname);
+        var DOC = parseInt(process.env.DOC);
+        DOC += 1;
+        process.env.DOC = DOC.toString();
+        console.log(process.env.DOC)
+        callback(null, Buffer.from(req.body.email + process.env.DOC).toString('base64').replace('/', '=') + '.pdf' );
       }   
   }),
   fileFilter: (req, file, callback) => {
@@ -29,6 +33,7 @@ var Candidate = require('../models/candidate');
  * Add a File to server
  */
 router.post('/upload_pdf', upload.single('pdf'), function(req, res, next) {
+  console.log(req.file)
   var newFile = new FileCandidate({
     name: req.file.originalname,
     path: req.file.path,
