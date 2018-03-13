@@ -160,13 +160,13 @@ function registerCandidate(e) {
     var imageFile = document.querySelector('#file')
     formData.append('pdf', imageFile.files[0]);
     formData.append('email', email);
-    axios.post('http://localhost:5000/users/upload_pdf', formData, {
+    axios.post('http://proafri.ufpi.br/users/upload_pdf', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
     })
     .then(function(response){
-            axios.post('http://localhost:5000/users/', {
+            axios.post('http://proafri.ufpi.br/users/', {
             country: country,
             name: name,
             address: address,

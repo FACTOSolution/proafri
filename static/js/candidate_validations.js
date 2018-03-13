@@ -14,7 +14,7 @@ $('#radioDoutorado').click(function() {
 })
 
 function query(degree) {
-    axios.get('http://localhost:5000/programs/' + degree)
+    axios.get('http://proafri.ufpi.br/programs/' + degree)
         .then(function(response) {
             $('#programA').html("")
             $('#programB').html("")
