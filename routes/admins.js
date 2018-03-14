@@ -111,10 +111,10 @@ router.get('/page', function(req, res, next){
         });
     })
   }else{
-    res.render('index', {
-        title: "Login",
-        message: "Usuário nao autenticado",
-    });
+      res.redirect('/admin');
+      //       res.set('Content-Type', 'text/html');
+      // res.send('<p> Usuário não autenticado </p>');
+
   }
 });
 
