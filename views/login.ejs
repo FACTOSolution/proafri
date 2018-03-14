@@ -42,7 +42,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Email inválido">
 						<input class="input100" type="text" name="name">
-						<span class="focus-input100" data-placeholder="Email"></span>
+						<span class="focus-input100" data-placeholder="Usuário"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Senha em branco">
@@ -61,6 +61,12 @@
 							</button>
 						</div>
 					</div>
+					<% if(locals.message) { %>
+						<br>
+						<span class="login100-form-title" style="font-size: 100%;">
+								Usuário não cadastrado.
+							</span>
+					<% } %>
 				</form>
 			</div>
 		</div>

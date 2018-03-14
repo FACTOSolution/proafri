@@ -16,6 +16,7 @@
     "express": "~4.15.5",
     "express-pdf": "^1.2.2",
     "foreman": "^2.0.0",
+    "http-error-pages": "^2.0.0",
     "jsonwebtoken": "^8.2.0",
     "moment": "^2.21.0",
     "mongoose": "^5.0.9",

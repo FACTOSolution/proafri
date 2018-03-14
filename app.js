@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var admins = require('./routes/admins');
 var programs = require('./routes/programs');
 var pdf = require('express-pdf');
+const httpErrorPages = require('http-error-pages');
 
 var app = express();
 var Candidate = require('./models/candidate');
@@ -41,6 +42,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'static')));
 
+httpErrorPages.express(app, {
+  lang: 'pt_BR',
+  footer: 'ProAfri'
+});
+
 app.use(pdf)
 
 app.use('/', index);
@@ -51,22 +57,5 @@ app.use('/programs', programs);
 // secret
 app.set('secret', config.secret);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;

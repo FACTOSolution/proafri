@@ -37,7 +37,7 @@
             <!--logo end-->
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Sair</a></li>
+                    <li><a class="logout" href="/admin/logout">Sair</a></li>
             	</ul>
             </div>
         </header>
@@ -55,7 +55,7 @@
                     <h5 class="centered"><%= adminName %></h5>
                     
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a class="active" href="/admin/page/1" >
                           <i class="fa fa-th"></i>
                           <span>Inscrições</span>
                       </a>
@@ -126,6 +126,15 @@
 
                                     <li>
                                         <div class="task-title">
+                                            <span class="task-title-sp">Email 2 - <%= candidate.email2 %> </span>
+                                            <div class="pull-right hidden-phone">
+                                               
+                                            </div>
+                                        </div>
+                                    </li>  
+
+                                    <li>
+                                        <div class="task-title">
                                             <span class="task-title-sp">Telefone Fixo - <%= candidate.tel.fixed %> </span>
                                             <div class="pull-right hidden-phone">
                                                
@@ -186,8 +195,7 @@
                                             </div>
                                         </div>
                                     </li>     
-
-                                    
+ 
                                     <li>
                                         <div class="task-title">
                                             <span class="task-title-sp">Data De Expiração Do Passaporte - <%= moment(candidate.passport.expirationDate).format('DD-MM-YYYY') %> </span>
@@ -195,61 +203,49 @@
                                                
                                             </div>
                                         </div>
-                                    </li>    
-                                    
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Lingua Nativa - <%= candidate.language.native %> </span>
-                                            <div class="pull-right hidden-phone">
-                                             
-                                            </div>
-                                        </div>
-                                    </li>    
+                                    </li>        
 
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Outras Linguas - <%= candidate.language.foreign %> </span>
-                                            <div class="pull-right hidden-phone">
-                                                
+                                    <% if(candidate.programA.university == adminName || adminName == 'GCUB') { %>
+                                        <li>
+                                            <div class="task-title">
+                                                <span class="task-title-sp">Universidade Escolhida - <%= candidate.programA.university %> </span>
+                                                <div class="pull-right hidden-phone">
+                                                    
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>   
-                                    
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Pontuação TOEFL - <%= candidate.languageExamPoints.toefl %> </span>
-                                            <div class="pull-right hidden-phone">
-                                              
-                                            </div>
-                                        </div>
-                                    </li>    
+                                        </li> 
 
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Outros Exames - <%= candidate.languageExamPoints.others %> </span>
-                                            <div class="pull-right hidden-phone">
-                                                
+                                        <li>
+                                            <div class="task-title">
+                                                <span class="task-title-sp">Programa Escolhido - <%= candidate.programA.name %> </span>
+                                                <div class="pull-right hidden-phone">
+                                                    
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>    
+                                        </li>    
+   
+                                    <% } %>
 
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Programa Escolhido - <%= candidate.programA.name %> </span>
-                                            <div class="pull-right hidden-phone">
-                                                
+                                    <% if(candidate.programB.university == adminName || adminName == 'GCUB') { %>
+                                        <li>
+                                            <div class="task-title">
+                                                <span class="task-title-sp">Universidade Escolhida - <%= candidate.programB.university %> </span>
+                                                <div class="pull-right hidden-phone">
+                                                    
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>    
+                                        </li> 
 
-                                    <li>
-                                        <div class="task-title">
-                                            <span class="task-title-sp">Informações Adcionais</span>
-                                            <div class="pull-right hidden-phone">
-                                                <a class="btn btn-success btn-xs" href='../pdf/<%= candidate._id %>'><i class="fas fa-download"></i></a>
+                                        <li>
+                                            <div class="task-title">
+                                                <span class="task-title-sp">Programa Escolhido - <%= candidate.programB.name %> </span>
+                                                <div class="pull-right hidden-phone">
+                                                    
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>    
+                                        </li>   
+                                          
+                                    <% } %>
 
                                     <li>
                                         <div class="task-title">
@@ -276,10 +272,7 @@
 
      <footer class="site-footer">
         <div class="text-center">
-            2018 - FACTOS
-            <a href="basic_table.html#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+            <a href="http://factos.ufpi.br">2018 - FACTOS</a>
         </div>
     </footer>
    

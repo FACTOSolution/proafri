@@ -9,13 +9,13 @@
     <title>ProAfri - Plataforma Online</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">  
         
     <!-- Custom styles for this template -->
-    <link href="../assets/css/style.css" rel="stylesheet">
-    <link href="../assets/css/style-responsive.css" rel="stylesheet">
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,7 +36,7 @@
             <!--logo end-->
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Sair</a></li>
+                    <li><a class="logout" href="/admin/logout">Sair</a></li>
             	</ul>
             </div>
         </header>
@@ -54,7 +54,7 @@
                     <h5 class="centered"><%= adminName %></h5>
                     
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a class="active" href="/admin/page/1" >
                           <i class="fa fa-th"></i>
                           <span>Inscrições</span>
                       </a>
@@ -82,6 +82,12 @@
                                   <th><i class="fas fa-user"></i> Nome</th>
                                   <th class="hidden-phone"><i class="fas fa-university"></i> Universidade</th>
                                   <th><i class="fa fa-bookmark"></i> Programa</th>
+                                  <% if(adminName == 'GCUB') { %>
+                                    <th class="hidden-phone"><i class="fas fa-university"></i> Universidade 2</th>
+                                  <% } %>
+                                  <% if(adminName == 'GCUB') { %>
+                                    <th class="hidden-phone"><i class="fas fa-bookmark"></i> Programa 2</th>
+                                  <% } %>
                                   <th></th>
                               </tr>
                               </thead>
@@ -89,12 +95,17 @@
                                 <% if(locals.data) { %> 
                                 <% for (var i = 0; i < data.length; i++) { %>
                                     <tr>
-                                        <td><a href='page/<%= data[i]._id %>'><%= data[i].name %></a></td>
-                                        <td class="hidden-phone"><%= adminName %></td>
-                                        <% if(data[i].programA.university == adminName) { %>
+                                        <td><a href='../candidate/<%= data[i]._id %>'><%= data[i].name %></a></td>
+                                        <% if(data[i].programA.university == adminName || adminName == 'GCUB') { %>
+                                            <td class="hidden-phone"><%= data[i].programA.university %></td>
+                                        <% } %>
+                                        <% if(data[i].programA.university == adminName || adminName == 'GCUB') { %>
                                             <td><%= data[i].programA.name %></td>
                                         <% } %>
-                                        <% if(data[i].programB.university == adminName) { %>
+                                        <% if(data[i].programB.university == adminName || adminName == 'GCUB') { %>
+                                            <td class="hidden-phone"><%= data[i].programB.university %></td>
+                                        <% } %>
+                                        <% if(data[i].programB.university == adminName || adminName == 'GCUB') { %>
                                             <td><%= data[i].programB.name %></td>
                                         <% } %>
                                     </tr>
@@ -110,28 +121,57 @@
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
+
+      <!-- INICIO PAGINACAO -->
+      <% if (pages > 0) { %>
+        <ul class="pagination" style="display: flex; justify-content:center">
+            <% if (current == 1) { %>
+                <li class="disabled"><a>Primeiro</a></li>
+            <% } else { %>
+                <li><a href="/page/1">Primeiro</a></li>
+            <% } %>
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                    <li class="active"><a><%= i %></a></li>
+                <% } else { %>
+                    <li><a href="/page/<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                <% } %>
+            <% } %>
+            <% if (current == pages) { %>
+                <li class="disabled"><a>Última</a></li>
+            <% } else { %>
+                <li><a href="/page/<%= pages %>">Última</a></li>
+            <% } %>
+        </ul>
+    <% } %>
+      <!-- FIM PAGINACAO -->
+
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2018 - FACTOS
-              <a href="basic_table.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
+                <a href="http://factos.ufpi.br">2018 - FACTOS</a>
           </div>
       </footer>
       <!--footer end-->
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="../assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="../assets/js/jquery.scrollTo.min.js"></script>
-    <script src="../assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="../../assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../../assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
     <!--common script for all pages-->
-    <script src="../assets/js/common-scripts.js"></script>
+    <script src="../../assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
     
