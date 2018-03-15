@@ -115,7 +115,7 @@ router.get('/page/:page', function(req, res, next){
         page = 1
     var admin = jwt.verify(req.cookies['token'], app.get('secret'))
     var ids = []
-    if (admin.university === 'GCUB') { return res.redirect('/admin/list/1') }
+    if (admin.university === 'GCUB') { return res.redirect('/admin/list/' + req.params.page) }
     Program.find({ university: admin.university }, '_id', function (err, programs) {
         // Building Array
         programs.forEach((program) => {
@@ -127,7 +127,7 @@ router.get('/page/:page', function(req, res, next){
             .populate('programA')
             .populate('programB')
             .exec(function(err, users) { 
-            Users.count().exec(function(err, count) {
+            Users.count({ $or: [ { programA: { $in: ids } }, { programB: { $in: ids } } ]}).exec(function(err, count) {
                 if(err) console.log(err);
                 if(!users){
                 /*  

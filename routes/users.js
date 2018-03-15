@@ -35,7 +35,7 @@ var Candidate = require('../models/candidate');
 router.post('/upload_pdf', upload.single('pdf'), function(req, res, next) {
   console.log(req.file)
   var newFile = new FileCandidate({
-    name: req.file.originalname,
+    name: req.file.filename,
     path: req.file.path,
   })
   newFile.save((err, pdf) => {
