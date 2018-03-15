@@ -97,7 +97,8 @@ router.get('/candidate/:_id', function(req, res, next) {
         res.render('candidate', {
             moment: moment,
             adminName: admin.university,
-            candidate: user
+            candidate: user,
+            pad: util.pad
         });
     });
     
@@ -264,14 +265,18 @@ router.post('/', function(req, res){
     }
 });
 
-router.get('/pdf/:_id', function(req, res, next) {
-    Users.findById(req.params['_id'], function(err, candidate) {
-        if(err) { return next(err) }
-        res.pdfFromHTML({
-            filename: 'generated.pdf',
-            htmlContent: util.buildhtml(candidate),
-    });
-    })
+router.get('/pdf/:_id', hasRole('GCUB'), function(req, res, next) {
+    Users.findById(req.params['_id'])
+        .populate('programA')
+        .populate('programB')
+        .exec(function(err, candidate){
+            if(err) { return next(err) }
+            var htmlC = util.buildhtml(candidate);
+            return res.pdfFromHTML({
+                filename: 'generated.pdf',
+                htmlContent: util.buildhtml(candidate),
+            });
+         })
 });
 
 module.exports = router;

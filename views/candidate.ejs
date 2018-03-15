@@ -60,6 +60,12 @@
                           <span>Inscrições</span>
                       </a>
                   </li>
+                  <li class="sub-menu">
+                    <a href="/admin/pdf/<%= candidate._id %>">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Gerar PDF</span>
+                    </a>
+                </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -95,7 +101,16 @@
                                                 
                                               </div>
                                           </div>
-                                      </li>     
+                                      </li>  
+                                      
+                                      <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Número Inscrição - <%= pad(candidate.regNumber, 5) %> </span>
+                                            <div class="pull-right hidden-phone">
+                                              
+                                            </div>
+                                        </div>
+                                    </li>  
 
                                       <li>
                                         <div class="task-title">
