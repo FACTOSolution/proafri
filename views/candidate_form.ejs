@@ -151,13 +151,13 @@
         *
        </span>
       </label>
-      <input class="form-control" id="email" name="email" placeholder="exemplo@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required />
+      <input class="form-control" id="email" name="email" placeholder="exemplo@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required  onblur="checkEmail(this)"/>
      </div>
      <div class="form-group ">
         <label class="control-label" for="email">
          Email 2
         </label>
-        <input class="form-control" id="email2" name="email2" placeholder="exemplo@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"/>
+        <input class="form-control" id="email2" name="email2" placeholder="exemplo@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" onblur="checkEmail(this)"/>
        </div>
      <div class="form-group ">
       <label class="control-label requiredField" for="country">

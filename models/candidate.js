@@ -31,9 +31,11 @@ const candidateSchema = new mongoose.Schema({
     email: {
         type: mongoose.SchemaTypes.Email,
         required: true,
+        unique: true
     },
     email2: {
         type: String,
+        unique: true
     },
     tel: {
         mobile: { type: String, required: true },

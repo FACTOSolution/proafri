@@ -220,6 +220,13 @@ function registerCandidate(e) {
         })
         .catch(function(error) {
             console.log(error);
+            if(error.response.data.message.code == 11000) {
+                $('#enviar').notify(
+                    'Este e-email já foi cadastrado',
+                    'error',
+                    { position: 'right'}
+                )
+             }
         })
     })
     .catch(function(error) {

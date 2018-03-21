@@ -33,7 +33,6 @@ var Candidate = require('../models/candidate');
  * Add a File to server
  */
 router.post('/upload_pdf', upload.single('pdf'), function(req, res, next) {
-  console.log(req.file)
   var newFile = new FileCandidate({
     name: req.file.filename,
     path: req.file.path,
@@ -49,6 +48,20 @@ router.post('/upload_pdf', upload.single('pdf'), function(req, res, next) {
 })
 
 /**
+ * Check if email is already in database
+ */
+router.get('/check/:email', function(req, res, next) {
+    Candidate.find({ $or: [ { email: req.params.email }, { email2: req.params.email }]}, (err, candidates) => {
+      if(err) { return next(err) }
+      if(!candidates.length) {
+        return res.status(200).json({ success: true, message: "Esse email não foi cadastrado antes" })
+      } else {
+        return res.status(500).json({ success: false, message: "Esse email já está sendo usado" });
+      }
+    })
+})
+
+/**
  * Add a candidate to mongo
  */
 router.post('/', function(req, res, next){
@@ -59,7 +72,7 @@ router.post('/', function(req, res, next){
   newCand.save((err) => {
     if(err){
       console.log(err);
-      return res.status(500).json({success: false, message: "Erro no cadastro algum campo requerido faltando. "});
+      return res.status(500).json({success: false, message: err });
       // res.render('confirmation', {
       //   title: "Failure",
       //   message: "Erro no cadastro algum campo requerido faltando."
