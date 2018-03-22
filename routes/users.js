@@ -18,7 +18,7 @@ const upload = multer({
   }),
   fileFilter: (req, file, callback) => {
       var ext = path.extname(file.originalname);
-      if (ext !== '.pdf'){
+      if (ext !== '.pdf' && file.mimetype != "application/pdf"){
           return callback(new Error('Apenas PDFs são permitidos'), false);
       }
       callback(null, true);

@@ -69,11 +69,6 @@ function checkEmail(email){
     }
     axios.get('http://localhost:5000/users/check/' + email.value)
         .then(function(response) {
-            $('#' + email.id).notify(
-                'Esse email não está sendo usado', 
-                'info',
-                { position: 'right'}
-            );
             if(email.id === 'email') {
                 if($('#email2').val() === "") { $('#enviar').removeAttr('disabled'); return }
                 axios.get('http://localhost:5000/users/check/' + $('#email2').val())
