@@ -16,7 +16,8 @@ const upload = multer({
   fileFilter: (req, file, callback) => {
       var ext = path.extname(file.originalname);
       if (ext !== '.pdf' && file.mimetype != "application/pdf"){
-          return callback(new Error('Apenas PDFs são permitidos'), false);
+          req.fileValidationError = 'Apenas PDFs são permitidos';
+          return callback(null, false, new Error('Apenas PDFs são permitidos'));
       }
       callback(null, true);
   }
@@ -62,10 +63,13 @@ router.get('/check/:email', function(req, res, next) {
  * Add a candidate to mongo
  */
 router.post('/', upload.single('pdf'), function(req, res, next){
+
+  if(req.fileValidationError) {
+    return res.render('candidate_form', { type: 'error', message: req.fileValidationError })
+  }
   
   var programA = req.body.programA.split(':')
   var programB = req.body.programB.split(':')
-
 
   var tel = { 'mobile': req.body.telMovel, 'fixed': req.body.telFixed }
   var passport = { 'number': req.body.passportNumber, 'country': req.body.passportCountry, 'expirationDate': req.body.passportExpirationDate}
