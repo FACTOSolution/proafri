@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="../css/font-awesome.min.css" />
 
         <!-- Custom Style -->
-    '	<link rel="stylesheet" href="../css/style.css" /> 
+        	<link rel="stylesheet" href="../css/style.css" /> 
 
         <!-- Inline CSS based on choices in "Settings" tab -->
         <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Impact, Charcoal, sans-serif; color: #2033bc}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: #ffffff !important;} .asteriskField{color: red;}.bootstrap-iso form .input-group-addon {color:#555555; background-color: #c8c8c8; border-radius: 4px; padding-left:12px}</style>
@@ -38,11 +38,22 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 box">
+       <% if(locals.message){ %>
+        <% if(type == 'success') { %>
+            <div class="alert alert-success">
+                <p>A sua inscrição foi inserida com sucesso !, agora iremos analisar a sua candidatura para retornar uma resposta.</p>
+            </div>
+        <% } else { %>
+            <div class="alert alert-danger">
+                    <p><%= message %></p>
+                </div>
+         <% }%>
+        <% } %>    
     <div class="formden_header">
     </div>
     <div class="head"> ProAfri </div>
     <div class="incricao"> INSCRIÇÃO </div>
-    <form method="post" id="candidateForm">
+    <form method="POST" id="candidateForm" enctype="multipart/form-data" action="/users">
 
     <!-- INICIO DA SEÇÃO I -->
     <div class="form-group ">
@@ -661,7 +672,7 @@
 
         </ul>
         <strong>OBS: Todos os documentos acima devem ser enviados em apenas 1 arquivo PDF.</strong>
-        <input class= id="file" name="file" id='file' required type="file"/>
+        <input class= id="file" name="pdf" id='file' required type="file"/>
 
     </div>
 
@@ -690,9 +701,17 @@
     <br><br>
      <div class="form-group">
       <div>
-       <button class="btn btn-primary btn-lg btn-block" name="submit" id="enviar" type="submit">
-        Enviar
-       </button>
+       <% if(locals.type) {  %>
+            <% if(type == 'error') { %>
+                <button class="btn btn-primary btn-lg btn-block" name="submit" id="enviar" type="submit">
+                    Enviar
+                </button>
+           <% } %>
+       <% } else { %>
+            <button class="btn btn-primary btn-lg btn-block" name="submit" id="enviar" type="submit">
+                Enviar
+            </button>
+       <% } %>
       </div>
      </div>
     </form>
@@ -723,7 +742,7 @@
 <script src="./css/jquery.min.js"></script>
 <script src="../js/notify.js"></script>
 <script src="../js/axios.min.js"></script>
-<script src="../js/candidate_main.js"></script>
+<!-- <script src="../js/candidate_main.js"></script> -->
 <!-- <script src="../js/candidate_util.js"></script> -->
 <script src="../js/candidate_validations.js"></script>
 <!-- <script src="../js/extravalidation.js"></script> -->

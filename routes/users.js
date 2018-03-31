@@ -9,11 +9,8 @@ const upload = multer({
           callback(null, './public/');
       },
       filename: (req, file, callback) => {
-        var DOC = parseInt(process.env.DOC);
-        DOC += 1;
-        process.env.DOC = DOC.toString();
-        console.log(process.env.DOC)
-        callback(null, Buffer.from(req.body.email + process.env.DOC).toString('base64').replace('/', '=') + '.pdf' );
+        var issuedAt = new Date().getTime();
+        callback(null, file.originalname + issuedAt + '.pdf' );
       }   
   }),
   fileFilter: (req, file, callback) => {
@@ -64,27 +61,58 @@ router.get('/check/:email', function(req, res, next) {
 /**
  * Add a candidate to mongo
  */
-router.post('/', function(req, res, next){
-  req.body.programA = mongoose.Types.ObjectId(req.body.programA);
-  req.body.programB = mongoose.Types.ObjectId(req.body.programB);
-  var newCand = new Candidate(req.body);
+router.post('/', upload.single('pdf'), function(req, res, next){
+  
+  var programA = req.body.programA.split(':')
+  var programB = req.body.programB.split(':')
 
-  newCand.save((err) => {
+
+  var tel = { 'mobile': req.body.telMovel, 'fixed': req.body.telFixed }
+  var passport = { 'number': req.body.passportNumber, 'country': req.body.passportCountry, 'expirationDate': req.body.passportExpirationDate}
+
+  var newCand = new Candidate({
+      country: req.body.country,
+      name : req.body.name,
+      address : req.body.address,
+      email : req.body.email,
+      email2 : req.body.email2,
+      tel : tel,
+      gender : req.body.gender,
+      dob : req.body.dob,
+      passport : passport,
+      civilState : req.body.civilState,
+      programA : programA[0],
+      programB : programB[0]
+  });
+  var newFile = new FileCandidate({
+    name: req.file.filename,
+    path: req.file.path,
+  })
+  newFile.save((err, pdf) => {
     if(err){
       console.log(err);
-      return res.status(500).json({success: false, message: err });
-      // res.render('confirmation', {
-      //   title: "Failure",
-      //   message: "Erro no cadastro algum campo requerido faltando."
-      // });
-    }else{
-      return res.status(200).json({success: true, message: "Candidato inserido com sucesso."});
-      // res.render('login', {
-      //   title: "Success",
-      //   message: "Adicionado com sucesso."
-      // });
+      return res.render('candidate_form', { type:"error", message: "Apenas arquivos PDFs são permitidos"});
+    } else {
+      newCand.pdf = pdf._id;    
+      newCand.save((err) => {
+        if(err){
+          console.log(err);
+          return res.render('candidate_form', { type:"error", message: "Erro no cadastro, algum campo requerido faltando. Para maiores explicações entre em contato com o GCUB"});
+          // res.render('confirmation', {
+          //   title: "Failure",
+          //   message: "Erro no cadastro algum campo requerido faltando."
+          // });
+        }else{
+          return res.render('candidate_form', { type:"success", message: "Candidato inscrito com sucesso"});
+          // res.render('login', {
+          //   title: "Success",
+          //   message: "Adicionado com sucesso."
+          // });
+        }
+      });
     }
-  });
+  })
+
 });
 
 module.exports = router;
